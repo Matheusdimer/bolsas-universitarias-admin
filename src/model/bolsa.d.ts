@@ -2,23 +2,26 @@ interface Bolsa {
     id: number,
     nome: string,
     descricao: string,
-    requisitos: Array<{
-        id: number,
-        descricao: string,
-    }>,
+    requisitos: Array<Requisito>,
     documentos: Array<Documento>,
-    editais: Array<{
-        id: number,
-        descricao: string,
-        arquivoId: number,
-        dataInicio: Date,
-        dataFim: Date,
-        dataResultado: Date,
-    }>,
+    editais: Array<Edital>,
     editalAtivo: boolean,
 
 }
 
+interface Requisito {
+    id: number,
+    descricao: string,
+}
+
+interface Edital {
+    id: number,
+    descricao: string,
+    arquivoId: number,
+    dataInicio: Date,
+    dataFim: Date,
+    dataResultado: Date,
+}
 
 interface Documento {
     id: number,
