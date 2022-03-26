@@ -1,3 +1,11 @@
+declare enum TipoBolsa {
+    MUNICIPAL,
+    ESTADUAL,
+    FEDERAL,
+    INSTITUCIONAL,
+    CONVÊNIO
+}
+
 interface Bolsa {
     id: number,
     nome: string,
@@ -6,6 +14,7 @@ interface Bolsa {
     documentos: Array<Documento>,
     editais: Array<Edital>,
     editalAtivo: boolean,
+    tipo: TipoBolsa,
 
 }
 
