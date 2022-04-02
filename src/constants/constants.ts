@@ -1,0 +1,1 @@
+export const apiUrl = 'https://bolsas-universitarias-api.herokuapp.com/api'
