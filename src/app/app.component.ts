@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { BolsasService } from './bolsas/bolsas.service';
+import { Router } from '@angular/router';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -8,19 +8,21 @@ import { BolsasService } from './bolsas/bolsas.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
-  // @ts-ignore
-  bolsas: Observable<Bolsa[]> = [];
 
   constructor(
-    private service: BolsasService
+    private authService: AuthService,
+    private router: Router
   ) {}
   
   ngOnInit(): void {
-    this.load()
+    
   }
 
-  load() {
-    this.bolsas = this.service.findAll();
+  logout() {
+    this.authService.logout();
+  }
+
+  isLogin(): boolean {    
+    return this.router.url === '/';
   }
 }

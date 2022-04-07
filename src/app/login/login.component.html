@@ -1,51 +1,53 @@
-<div class="card mx-auto">
-  <div class="card-body">
-    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
-      <h4 class="mb-4">Identifique-se</h4>
-
-      <div class="d-flex justify-content-center mb-5">
-        <img
-          src="http://www.unesc.net/portal/resources/assets/template/59//images/unesc-brand.svg"
-          alt="Unesc Logo"
-          style="width: 200px;"
-        />
-      </div>
-
-      <div class="md-outline mb-4">
-        <mdb-form-control>
-          <input
-            mdbInput
-            class="form-control form-control-lg"
-            type="email"
-            id="user"
-            name="email"
-            [(ngModel)]="user.username"
+<section>
+  <div class="card mx-auto">
+    <div class="card-body">
+      <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+        <h4 class="mb-4">Identifique-se</h4>
+  
+        <div class="d-flex justify-content-center mb-5">
+          <img
+            src="http://www.unesc.net/portal/resources/assets/template/59//images/unesc-brand.svg"
+            alt="Unesc Logo"
+            style="width: 200px;"
           />
-          <label mdbLabel class="form-label" for="user">Usuário</label>
-        </mdb-form-control>
-      </div>
-
-      <!-- Password input -->
-      <div class="md-outline mb-4">
-        <mdb-form-control>
-          <input
-            mdbInput
-            type="password"
-            id="form-password"
-            class="form-control form-control-lg"
-            name="password"
-            [(ngModel)]="user.password"
-          />
-          <label mdbLabel class="form-label" for="user">Senha</label>
-        </mdb-form-control>
-      </div>
-
-      <button type="submit" class="btn btn-primary btn-block btn-lg mb-4">
-        <div *ngIf="loading" class="spinner-border" role="status">
-          <span class="visually-hidden">Carregando...</span>
         </div>
-        <span *ngIf="!loading">Entrar</span>
-      </button>
-    </form>
+  
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+            <input
+              mdbInput
+              class="form-control form-control-lg"
+              type="email"
+              id="user"
+              name="email"
+              [(ngModel)]="user.username"
+            />
+            <label mdbLabel class="form-label" for="user">Usuário</label>
+          </mdb-form-control>
+        </div>
+  
+        <!-- Password input -->
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+            <input
+              mdbInput
+              type="password"
+              id="form-password"
+              class="form-control form-control-lg"
+              name="password"
+              [(ngModel)]="user.password"
+            />
+            <label mdbLabel class="form-label" for="user">Senha</label>
+          </mdb-form-control>
+        </div>
+  
+        <button type="submit" class="btn btn-primary btn-block btn-lg mb-4">
+          <div *ngIf="loading" class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
+          </div>
+          <span *ngIf="!loading">Entrar</span>
+        </button>
+      </form>
+    </div>
   </div>
-</div>
+</section>
