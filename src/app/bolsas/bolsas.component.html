@@ -26,9 +26,10 @@
   <table class="table align-middle mt-3 bg-white">
     <thead class="bg-light">
       <tr>
-        <th>Nome</th>
-        <th>Descrição</th>
-        <th>Status</th>
+        <th width="100px">Identificador</th>
+        <th width="20%">Nome</th>
+        <th width="30%">Descrição</th>
+        <th>Edital</th>
         <th>Tipo</th>
         <th>Ações</th>
       </tr>
@@ -36,6 +37,9 @@
     <tbody>
       <ng-container *ngIf="bolsas$ | async as bolsas; else loading">
         <tr *ngFor="let bolsa of bolsas">
+          <td>
+            <p class="fw-normal mb-1">{{ bolsa.id }}</p>
+          </td>
           <td>
             <div class="d-flex align-items-center">
               <p class="fw-bold mb-1">{{ bolsa.nome }}</p>
@@ -45,23 +49,23 @@
             <p class="fw-normal mb-1">{{ bolsa.descricao }}</p>
           </td>
           <td>
-            <span class="badge badge-success rounded-pill d-inline"
-              >Active</span
-            >
+            <span class="badge badge-success rounded-pill d-inline">Ativo</span>
           </td>
           <td>Municipal</td>
           <td>
-            <button type="button" class="btn btn-outline btn-sm btn-rounded">
-              <i class="fa fa-edit"></i>
-              Editar
-            </button>
-            <button
-              type="button"
-              class="btn btn-danger btn-sm btn-rounded ms-2"
-            >
-              <i class="fa fa-trash"></i>
-              Excluir
-            </button>
+            <div class="d-flex">
+              <button type="button" class="btn btn-outline btn-sm btn-rounded">
+                <i class="fa fa-edit"></i>
+                Editar
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm btn-rounded ms-2"
+              >
+                <i class="fa fa-trash"></i>
+                Excluir
+              </button>
+            </div>
           </td>
         </tr>
       </ng-container>
@@ -69,7 +73,11 @@
         <tr>
           <td colspan="5">
             <div class="d-flex align-items-center justify-content-center gap-2">
-              <div class="spinner-border" role="status" aria-hidden="true"></div>
+              <div
+                class="spinner-border"
+                role="status"
+                aria-hidden="true"
+              ></div>
               <strong>Carregando...</strong>
             </div>
           </td>
