@@ -4,6 +4,10 @@ declare enum Sexo {
     OUTRO
 }
 
+interface TokenResponse {
+    token: string
+}
+
 interface Aluno {
     id: number,
     nome: string,

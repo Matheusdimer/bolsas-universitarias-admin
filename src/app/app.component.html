@@ -1,8 +1,13 @@
 <div>
-    <ul>
-        <li *ngFor="let bolsa of bolsas | async">
-            {{ bolsa.nome }}: {{ bolsa.descricao }}
-        </li>
-    </ul>
-    <button (click)="load()">Atualizar</button>
+  <header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <div class="container-fluid">
+        <h2>Bolsas Universitárias Unesc</h2>
+      </div>
+    </nav>
+  </header>
+  <main class="container-fluid">
+    <router-outlet></router-outlet>
+  </main>
 </div>

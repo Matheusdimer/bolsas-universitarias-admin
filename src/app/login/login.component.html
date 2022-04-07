@@ -1,0 +1,35 @@
+<div class="card mx-auto">
+  <div class="card-body">
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <h4 class="mb-4">Identifique-se</h4>
+      <!-- Email input -->
+      <div class="md-outline mb-4 md-form">
+        <input
+          placeholder="Usuário"
+          type="email"
+          id="form-email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="user.username"
+        />
+      </div>
+
+      <!-- Password input -->
+      <div class="md-outline mb-4">
+        <input
+          placeholder="Senha"
+          type="password"
+          id="form-password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="user.password"
+        />
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary btn-block mb-4">
+        Entrar
+      </button>
+    </form>
+  </div>
+</div>
