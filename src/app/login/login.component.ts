@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map, startWith } from 'rxjs';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+
+  loading = false
 
   user: User = {
     username: '',
@@ -20,13 +23,16 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
   }
 
   onSubmit(): void {
-    this.service.login(this.user).subscribe(response => {
-      this.router.navigate(['/bolsas'])
-    });
+    this.service.login(this.user)
+      .pipe(startWith(() => this.loading = true))
+      .subscribe(response => {
+        this.loading = false
+        this.router.navigate(['/bolsas'])
+      });
   }
 
 }
