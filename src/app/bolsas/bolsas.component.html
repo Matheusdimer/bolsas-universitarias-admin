@@ -1,4 +1,80 @@
-<div>
-  <p>bolsas works!</p>
-  <p>{{ token }}</p>
+<div class="container-fluid" style="margin-top: 80px;">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Cadastro de bolsas</a>
+      <div class="d-flex w-auto">
+        <button class="btn btn-success ms-2" (ngClick)="reload()">
+          <i class="fa fa-plus"></i>
+          Adicionar
+        </button>
+        <form class="input-group w-auto ms-2">
+          <input
+            type="search"
+            class="form-control rounded"
+            placeholder="Pesquisar"
+            aria-label="Search"
+            aria-describedby="search-addon"
+          />
+          <span class="input-group-text border-0" id="search-addon">
+            <i class="fas fa-search"></i>
+          </span>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table align-middle mt-3 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Status</th>
+        <th>Tipo</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="bolsas$ | async as bolsas; else loading">
+        <tr *ngFor="let bolsa of bolsas">
+          <td>
+            <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1">{{ bolsa.nome }}</p>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ bolsa.descricao }}</p>
+          </td>
+          <td>
+            <span class="badge badge-success rounded-pill d-inline"
+              >Active</span
+            >
+          </td>
+          <td>Municipal</td>
+          <td>
+            <button type="button" class="btn btn-outline btn-sm btn-rounded">
+              <i class="fa fa-edit"></i>
+              Editar
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm btn-rounded ms-2"
+            >
+              <i class="fa fa-trash"></i>
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #loading>
+        <tr>
+          <td colspan="5">
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <div class="spinner-border" role="status" aria-hidden="true"></div>
+              <strong>Carregando...</strong>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
 </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { BolsasService } from './bolsas.service';
 
 @Component({
   selector: 'app-bolsas',
@@ -8,14 +10,19 @@ import { AuthService } from '../services/auth.service';
 })
 export class BolsasComponent implements OnInit {
 
-  token = this.authService.token
+  bolsas$: Observable<Bolsa[]> = this.bolsasService.findAll();
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private bolsasService: BolsasService
   ) { }
 
   ngOnInit(): void {
 
+  }
+
+  reload() {
+    this.bolsas$ = this.bolsasService.findAll();
   }
 
 }
