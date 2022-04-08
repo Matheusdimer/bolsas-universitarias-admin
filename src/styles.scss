@@ -30,3 +30,7 @@ input.table-edit:not(:focus) {
   background-color: transparent;
   border-color: transparent;
 }
+
+.active-link {
+  color: var(--mdb-blue) !important;
+}

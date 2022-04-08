@@ -16,20 +16,28 @@
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li>
-        <a [routerLink]="'/bolsas'" class="nav-link px-2 link-primary"
+        <a [routerLink]="'/bolsas'"
+           [routerLinkActive]="'active-link'"
+           class="nav-link px-2 link-dark"
           >Bolsas</a
         >
       </li>
       <li>
-        <a [routerLink]="'/candidaturas'" class="nav-link px-2 link-dark"
-          >Candidaturas</a
+        <a [routerLink]="'/inscricoes'"
+           [routerLinkActive]="'active-link'"
+           class="nav-link px-2 link-dark"
+          >Inscrições</a
         >
       </li>
       <li>
-        <a [routerLink]="'/alunos'" class="nav-link px-2 link-dark">Alunos</a>
+        <a [routerLink]="'/alunos'"
+           [routerLinkActive]="'active-link'"
+           class="nav-link px-2 link-dark">Alunos</a>
       </li>
       <li>
-        <a [routerLink]="'/funcionarios'" class="nav-link px-2 link-dark"
+        <a [routerLink]="'/funcionarios'"
+           [routerLinkActive]="'link-primary'"
+           class="nav-link px-2 link-dark"
           >Funcionários</a
         >
       </li>

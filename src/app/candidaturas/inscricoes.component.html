@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Análise de inscrições</a>
+      <div class="d-flex w-auto">
+
+      </div>
+    </div>
+  </nav>
+
+  <table class="table align-middle mt-3 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th width="100px">Identificador</th>
+        <th width="20%">Bolsa</th>
+        <th width="30%">Data de solicitação</th>
+        <th>Aluno</th>
+        <th>Situação</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-template #loading>
+        <tr>
+          <td colspan="6">
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <div
+                class="spinner-border"
+                role="status"
+                aria-hidden="true"
+              ></div>
+              <strong>Carregando...</strong>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>

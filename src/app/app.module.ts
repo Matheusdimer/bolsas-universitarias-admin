@@ -26,6 +26,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoadingPipe} from "./components/loading.pipe";
 import { CadastroComponent } from './bolsas/cadastro/cadastro.component';
 import { TableEditComponent } from './components/table-edit/table-edit.component';
+import { InscricoesComponent } from './candidaturas/inscricoes.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { TableEditComponent } from './components/table-edit/table-edit.component
     BolsasComponent,
     LoadingPipe,
     CadastroComponent,
-    TableEditComponent
+    TableEditComponent,
+    InscricoesComponent
   ],
   imports: [
     BrowserModule,

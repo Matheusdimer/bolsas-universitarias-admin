@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { BolsasComponent } from './bolsas/bolsas.component';
 import { LoginComponent } from './login/login.component';
 import {CadastroComponent} from "./bolsas/cadastro/cadastro.component";
+import {InscricoesComponent} from "./candidaturas/inscricoes.component";
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'bolsas/cadastro/:bolsaId',
     component: CadastroComponent
+  },
+  {
+    path: 'inscricoes',
+    component: InscricoesComponent
   }
 ];
 
