@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <a class="navbar-brand">Cadastro de bolsas</a>
       <div class="d-flex w-auto">
-        <button class="btn btn-success ms-2" (ngClick)="reload()">
+        <button class="btn btn-success ms-2" [routerLink]="['cadastro']">
           <i class="fa fa-plus"></i>
           Adicionar
         </button>
@@ -36,7 +36,7 @@
     </thead>
     <tbody>
       <ng-container *ngIf="bolsas$ | async as bolsas; else loading">
-        <tr *ngFor="let bolsa of bolsas">
+        <tr *ngFor="let bolsa of bolsas; let i = index">
           <td>
             <p class="fw-normal mb-1">{{ bolsa.id }}</p>
           </td>
@@ -45,25 +45,27 @@
               <p class="fw-bold mb-1">{{ bolsa.nome }}</p>
             </div>
           </td>
-          <td>
-            <p class="fw-normal mb-1">{{ bolsa.descricao }}</p>
+          <td style="max-width: 500px" [title]="bolsa.descricao">
+            <p class="fw-normal mb-1 text-truncate">{{ bolsa.descricao }}</p>
           </td>
           <td>
-            <span class="badge badge-success rounded-pill d-inline">Ativo</span>
+            <span
+              class="badge rounded-pill d-inline"
+              [ngClass]="i % 2 === 0 ? 'badge-danger' : 'badge-success'"
+            >
+              {{ i % 2 === 0 ? "Inativo" : "Ativo" }}
+            </span>
           </td>
           <td>Municipal</td>
           <td>
             <div class="d-flex">
-              <button type="button" class="btn btn-outline btn-sm btn-rounded">
-                <i class="fa fa-edit"></i>
-                Editar
-              </button>
               <button
                 type="button"
-                class="btn btn-danger btn-sm btn-rounded ms-2"
+                class="btn btn-outline btn-sm btn-rounded"
+                [routerLink]="['cadastro', bolsa.id]"
               >
-                <i class="fa fa-trash"></i>
-                Excluir
+                <i class="fa fa-edit"></i>
+                Editar
               </button>
             </div>
           </td>
@@ -71,7 +73,7 @@
       </ng-container>
       <ng-template #loading>
         <tr>
-          <td colspan="5">
+          <td colspan="6">
             <div class="d-flex align-items-center justify-content-center gap-2">
               <div
                 class="spinner-border"

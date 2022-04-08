@@ -24,13 +24,17 @@ import { MdbTooltipModule } from 'mdb-angular-ui-kit/tooltip';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LoadingPipe} from "./components/loading.pipe";
+import { CadastroComponent } from './bolsas/cadastro/cadastro.component';
+import { TableEditComponent } from './components/table-edit/table-edit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     BolsasComponent,
-    LoadingPipe
+    LoadingPipe,
+    CadastroComponent,
+    TableEditComponent
   ],
   imports: [
     BrowserModule,

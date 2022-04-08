@@ -17,4 +17,20 @@ export class BolsasService {
   findAll(): Observable<Bolsa[]> {
     return this.http.get<Bolsa[]>(this.path);
   }
+
+  find(id: number): Observable<Bolsa> {
+    return this.http.get<Bolsa>(`${this.path}/${id}`);
+  }
+
+  update(bolsa: Bolsa) {
+    return this.http.put<Bolsa>(`${this.path}/${bolsa.id}`, bolsa);
+  }
+
+  save(bolsa: Bolsa): Observable<Bolsa> {
+    if (bolsa.id) {
+      return this.update(bolsa);
+    }
+
+    return this.http.post<Bolsa>(this.path, bolsa);
+  }
 }

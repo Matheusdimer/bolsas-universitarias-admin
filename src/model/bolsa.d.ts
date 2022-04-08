@@ -1,9 +1,9 @@
 declare enum TipoBolsa {
-    MUNICIPAL,
-    ESTADUAL,
-    FEDERAL,
-    INSTITUCIONAL,
-    CONVÊNIO
+    MUNICIPAL = 'M',
+    ESTADUAL = 'E',
+    FEDERAL = 'F',
+    INSTITUCIONAL = 'I',
+    CONVENIO = 'C'
 }
 
 interface Bolsa {
@@ -19,7 +19,7 @@ interface Bolsa {
 }
 
 interface Requisito {
-    id: number,
+    id?: number,
     descricao: string,
 }
 

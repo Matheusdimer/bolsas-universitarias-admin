@@ -1,0 +1,78 @@
+<div class="card">
+  <div class="card-header mt-2">
+    <div class="d-flex align-items-center">
+      <a class="btn btn-link btn-rounded btn-icon text-black" [routerLink]="['/bolsas']">
+        <i style="font-size: 20px" class="fa fa-arrow-left"></i>
+      </a>
+      <h4 style="margin: 0">{{ isEdit ? 'Editando' : 'Nova' }} bolsa</h4>
+    </div>
+  </div>
+  <form #formBolsa="ngForm" (ngSubmit)="save()">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h5>Dados Gerais</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <input
+                mdbInput
+                class="form-control form-control-lg"
+                type="text"
+                id="nome"
+                name="nome"
+                [(ngModel)]="bolsa.nome"
+              />
+              <label mdbLabel class="form-label" for="nome">Nome</label>
+            </mdb-form-control>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <select class="form-select" aria-label="Default select example">
+            <option [value]="null">Selecione o tipo da bolsa</option>
+            <option *ngFor="let tipo of tipos" [value]="tipo.id">
+              {{ tipo.description }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <textarea
+                mdbInput
+                class="form-control form-control-lg"
+                type="text"
+                name="descricao"
+                [(ngModel)]="bolsa.descricao"
+              ></textarea>
+              <label mdbLabel class="form-label" for="nome">Descrição</label>
+            </mdb-form-control>
+          </div>
+        </div>
+      </div>
+      <hr />
+      <app-table-edit
+        name="Requisitos"
+        [columns]="columns"
+        [model]="bolsa"
+        variable="requisitos"
+        [hasIndex]="true"
+      ></app-table-edit>
+    </div>
+    <div class="card-footer">
+      <div class="row">
+        <div class="col-md-12 d-flex flex-row-reverse align-items-center">
+          <button class="btn btn-primary d-flex" type="submit" [disabled]="isLoading">
+            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+            <span>Salvar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

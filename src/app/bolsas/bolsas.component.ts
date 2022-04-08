@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { AuthService } from '../services/auth.service';
-import { BolsasService } from './bolsas.service';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {AuthService} from '../services/auth.service';
+import {BolsasService} from './bolsas.service';
 
 @Component({
   selector: 'app-bolsas',
@@ -24,5 +24,4 @@ export class BolsasComponent implements OnInit {
   reload() {
     this.bolsas$ = this.bolsasService.findAll();
   }
-
 }

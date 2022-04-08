@@ -2,7 +2,7 @@
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/regular.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
- 
+
 @import '~mdb-angular-ui-kit/assets/scss/mdb.scss';
 
 body {
@@ -11,4 +11,22 @@ body {
 
 main {
     max-width: 1500px;
+}
+
+a.btn-icon {
+  padding: 1rem;
+  margin-right: 5px;
+}
+
+.form-select {
+  line-height: 1.92;
+}
+
+.form-select:active {
+  border-color: var(--mdb-blue);
+}
+
+input.table-edit:not(:focus) {
+  background-color: transparent;
+  border-color: transparent;
 }

@@ -4,7 +4,7 @@ div.card {
 }
 
 section {
-  height: 100vh;
+  height: calc(100vh - 90px);
   display: flex;
   align-items: center;
 }
