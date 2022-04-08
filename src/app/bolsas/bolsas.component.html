@@ -56,7 +56,7 @@
               {{ i % 2 === 0 ? "Inativo" : "Ativo" }}
             </span>
           </td>
-          <td>Municipal</td>
+          <td>{{ getTipoBolsa(bolsa.tipoBolsa) }}</td>
           <td>
             <div class="d-flex">
               <button

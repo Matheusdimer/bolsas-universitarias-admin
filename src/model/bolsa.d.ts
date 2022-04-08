@@ -1,10 +1,4 @@
-declare enum TipoBolsa {
-    MUNICIPAL = 'M',
-    ESTADUAL = 'E',
-    FEDERAL = 'F',
-    INSTITUCIONAL = 'I',
-    CONVENIO = 'C'
-}
+import {TipoBolsa} from "./constants";
 
 interface Bolsa {
     id: number,
@@ -14,7 +8,7 @@ interface Bolsa {
     documentos: Array<Documento>,
     editais: Array<Edital>,
     editalAtivo: boolean,
-    tipo: TipoBolsa,
+    tipoBolsa?: TipoBolsa,
 
 }
 

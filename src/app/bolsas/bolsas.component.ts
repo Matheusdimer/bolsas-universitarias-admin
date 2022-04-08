@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {AuthService} from '../services/auth.service';
 import {BolsasService} from './bolsas.service';
+import {TipoBolsa, TiposBolsa} from "../../model/constants";
+import {Bolsa} from "../../model/bolsa";
 
 @Component({
   selector: 'app-bolsas',
@@ -11,6 +13,7 @@ import {BolsasService} from './bolsas.service';
 export class BolsasComponent implements OnInit {
 
   bolsas$: Observable<Bolsa[]> = this.bolsasService.findAll();
+  tiposBolsa = TiposBolsa;
 
   constructor(
     private authService: AuthService,
@@ -23,5 +26,9 @@ export class BolsasComponent implements OnInit {
 
   reload() {
     this.bolsas$ = this.bolsasService.findAll();
+  }
+
+  getTipoBolsa(tipo?: TipoBolsa) {
+    return this.tiposBolsa.find(t => t.id === tipo)?.description;
   }
 }

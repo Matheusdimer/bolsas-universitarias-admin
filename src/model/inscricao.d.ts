@@ -1,3 +1,5 @@
+import {Bolsa, Documento} from "./bolsa";
+
 declare enum SituacaoBolsa {
     AGUARDANDO_ANALISE,
     EM_ANALISE,

@@ -31,7 +31,7 @@
           </div>
         </div>
         <div class="col-md-4">
-          <select class="form-select" aria-label="Default select example">
+          <select [(ngModel)]="bolsa.tipoBolsa" class="form-select" name="tipo">
             <option [value]="null">Selecione o tipo da bolsa</option>
             <option *ngFor="let tipo of tipos" [value]="tipo.id">
               {{ tipo.description }}

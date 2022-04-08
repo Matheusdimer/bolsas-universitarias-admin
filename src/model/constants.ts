@@ -1,7 +1,14 @@
+export declare enum TipoBolsa {
+  MUNICIPAL = 'MUNICIPAL',
+  ESTADUAL = 'ESTADUAL',
+  FEDERAL = 'FEDERAL',
+  INSTITUCIONAL = 'INSTITUCIONAL',
+  CONVENIO = 'CONVENIO'
+}
 export const TiposBolsa = [
-  { id: 'M', description: 'Municipal'},
-  { id: 'E', description: 'Estadual'},
-  { id: 'F', description: 'Federal'},
-  { id: 'I', description: 'Institucional'},
-  { id: 'C', description: 'Convênio'}
+  { id: 'MUNICIPAL', description: 'Municipal'},
+  { id: 'ESTADUAL', description: 'Estadual'},
+  { id: 'FEDERAL', description: 'Federal'},
+  { id: 'INSTITUCIONAL', description: 'Institucional'},
+  { id: 'CONVENIO', description: 'Convênio'},
 ];

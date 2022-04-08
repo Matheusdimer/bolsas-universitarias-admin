@@ -9,6 +9,7 @@ import { TiposBolsa } from '../../../model/constants';
 import { TableEditColumn } from '../../components/table-edit/table-edit.component';
 import { BolsasService } from '../bolsas.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import {Bolsa, Requisito} from "../../../model/bolsa";
 
 @Component({
   selector: 'app-cadastro',
@@ -31,6 +32,7 @@ export class CadastroComponent implements OnInit {
   tipos = TiposBolsa;
 
   bolsa: Bolsa = {
+    tipoBolsa: undefined,
     requisitos: [] as Requisito[],
   } as Bolsa;
 
@@ -60,9 +62,14 @@ export class CadastroComponent implements OnInit {
 
   save(): void {
     this.turnLoad();
-    this.service.save(this.bolsa).subscribe(() => {
-      this.router.navigate(['/bolsas']);
+    console.log(this.bolsa);
+    try {
+      this.service.save(this.bolsa).subscribe(() => {
+        this.router.navigate(['/bolsas']);
+        this.turnLoad();
+      })
+    } catch (e) {
       this.turnLoad();
-    })
+    }
   }
 }
