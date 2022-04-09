@@ -4,6 +4,7 @@ import { BolsasComponent } from './bolsas/bolsas.component';
 import { LoginComponent } from './login/login.component';
 import {CadastroComponent} from "./bolsas/cadastro/cadastro.component";
 import {InscricoesComponent} from "./candidaturas/inscricoes.component";
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 const routes: Routes = [
   {
@@ -25,6 +26,10 @@ const routes: Routes = [
   {
     path: 'inscricoes',
     component: InscricoesComponent
+  },
+  {
+    path: 'funcionarios',
+    component: FuncionariosComponent
   }
 ];
 

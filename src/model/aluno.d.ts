@@ -20,6 +20,16 @@ interface Aluno {
     sexo: Sexo,
 }
 
+interface Funcionario {
+    id: number,
+    nome: string,
+    dataNascimento: Date,
+    cpf: string,
+    usuario: User,
+    email?: string,
+}
+
+
 interface User {
     username: string,
     password: string
