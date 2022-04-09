@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">Cadastro de funcionários</a>
+        <div class="d-flex w-auto">
+          <button class="btn btn-success">
+            <i class="fa fa-plus"></i>
+            Adicionar
+          </button>
+        </div>
+      </div>
+    </nav>
+  
+    <table class="table align-middle mt-3 bg-white">
+      <thead class="bg-light">
+        <tr>
+          <th width="100px">Identificador</th>
+          <th width="20%">Nome</th>
+          <th>CPF</th>
+          <th>Data de nascimento</th>
+          <th>E-mail</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngIf="funcionarios$ | async as funcionarios; else loading">
+          <tr *ngFor="let funcionario of funcionarios">
+            <td>
+              {{ funcionario.id }}
+            </td>
+            <td>
+              {{ funcionario.nome }}
+            </td>
+            <td>
+              {{ funcionario.cpf }}
+            </td>
+            <td>
+              {{ funcionario.dataNascimento }}
+            </td>
+            <td>
+              {{ funcionario.email }}
+            </td>
+            <td>
+              <button class="btn btn-outline btn-sm btn-rounded">Editar</button>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-template #loading>
+          <tr>
+            <td colspan="6">
+              <div class="d-flex align-items-center justify-content-center gap-2">
+                <div
+                  class="spinner-border"
+                  role="status"
+                  aria-hidden="true"
+                ></div>
+                <strong>Carregando...</strong>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </tbody>
+    </table>
+  </div>
+  

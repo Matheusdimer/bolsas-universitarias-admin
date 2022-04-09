@@ -27,6 +27,7 @@ import {LoadingPipe} from "./components/loading.pipe";
 import { CadastroComponent } from './bolsas/cadastro/cadastro.component';
 import { TableEditComponent } from './components/table-edit/table-edit.component';
 import { InscricoesComponent } from './candidaturas/inscricoes.component';
+import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { InscricoesComponent } from './candidaturas/inscricoes.component';
     LoadingPipe,
     CadastroComponent,
     TableEditComponent,
-    InscricoesComponent
+    InscricoesComponent,
+    FuncionariosComponent
   ],
   imports: [
     BrowserModule,
