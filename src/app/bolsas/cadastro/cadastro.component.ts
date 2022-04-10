@@ -19,12 +19,29 @@ import {Bolsa, Requisito} from "../../../model/bolsa";
 export class CadastroComponent implements OnInit {
   @ViewChildren('requisitos') private requisitosElem!: QueryList<ElementRef>;
 
-  readonly columns: TableEditColumn[] = [
+  readonly requisitosCols: TableEditColumn[] = [
     {
       model: 'descricao',
       editable: true,
       label: 'Descrição',
     },
+  ];
+
+  readonly documentosCols: TableEditColumn[] = [
+    {
+      model: 'nome',
+      editable: true,
+      label: 'Nome'
+    },
+    {
+      model: 'arquivoId',
+      editable: true,
+      label: 'Arquivo',
+      file: true,
+      onChange: (arquivo: Arquivo, i) => {
+        this.bolsa.documentos[i].dataCriacao = arquivo.criadoEm
+      }
+    }
   ];
 
   isEdit = false;
@@ -62,7 +79,6 @@ export class CadastroComponent implements OnInit {
 
   save(): void {
     this.turnLoad();
-    console.log(this.bolsa);
     try {
       this.service.save(this.bolsa).subscribe(() => {
         this.router.navigate(['/bolsas']);

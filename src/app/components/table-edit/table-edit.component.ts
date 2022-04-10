@@ -4,7 +4,9 @@ export declare interface TableEditColumn {
   model: string,
   label: string,
   editable: boolean,
-  width?: string
+  file?: boolean,
+  width?: string,
+  onChange?: ($event: any, index: number) => void
 }
 
 @Component({

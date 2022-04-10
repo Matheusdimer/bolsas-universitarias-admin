@@ -36,6 +36,11 @@
     </thead>
     <tbody>
       <ng-container *ngIf="bolsas$ | async as bolsas; else loading">
+        <tr *ngIf="!bolsas.length">
+          <td colspan="6" class="text-center">
+            Ainda não há bolsas por aqui.
+          </td>
+        </tr>
         <tr *ngFor="let bolsa of bolsas; let i = index">
           <td>
             <p class="fw-normal mb-1">{{ bolsa.id }}</p>

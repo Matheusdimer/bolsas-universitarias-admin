@@ -28,6 +28,7 @@ import { CadastroComponent } from './bolsas/cadastro/cadastro.component';
 import { TableEditComponent } from './components/table-edit/table-edit.component';
 import { InscricoesComponent } from './candidaturas/inscricoes.component';
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { InputFileComponent } from './components/input-file/input-file.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
     CadastroComponent,
     TableEditComponent,
     InscricoesComponent,
-    FuncionariosComponent
+    FuncionariosComponent,
+    InputFileComponent
   ],
   imports: [
     BrowserModule,

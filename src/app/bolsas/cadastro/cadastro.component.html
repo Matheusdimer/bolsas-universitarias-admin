@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mb-5">
   <div class="card-header mt-2">
     <div class="d-flex align-items-center">
       <a class="btn btn-link btn-rounded btn-icon text-black" [routerLink]="['/bolsas']">
@@ -32,7 +32,7 @@
         </div>
         <div class="col-md-4">
           <select [(ngModel)]="bolsa.tipoBolsa" class="form-select" name="tipo">
-            <option [value]="null">Selecione o tipo da bolsa</option>
+            <option [value]="undefined">Selecione o tipo da bolsa</option>
             <option *ngFor="let tipo of tipos" [value]="tipo.id">
               {{ tipo.description }}
             </option>
@@ -58,9 +58,17 @@
       <hr />
       <app-table-edit
         name="Requisitos"
-        [columns]="columns"
+        [columns]="requisitosCols"
         [model]="bolsa"
         variable="requisitos"
+        [hasIndex]="true"
+      ></app-table-edit>
+      <hr>
+      <app-table-edit
+        name="Documentos"
+        [columns]="documentosCols"
+        [model]="bolsa"
+        variable="documentos"
         [hasIndex]="true"
       ></app-table-edit>
     </div>

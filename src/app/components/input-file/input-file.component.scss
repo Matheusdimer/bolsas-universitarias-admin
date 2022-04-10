@@ -1,0 +1,15 @@
+div.file {
+  background-color: #fff;
+  border: 1px solid var(--mdb-gray-400);
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+.btn-remove {
+  cursor: pointer;
+  color: black;
+}
+
+.btn-remove:hover {
+  color: var(--mdb-blue);
+}

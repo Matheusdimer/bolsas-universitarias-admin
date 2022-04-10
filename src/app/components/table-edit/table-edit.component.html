@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12 d-flex align-items-center justify-content-between">
-    <h5>Requisitos</h5>
+    <h5>{{ name }}</h5>
     <button type="button" class="btn btn-success" (click)="add()">
       <i class="fa fa-plus"></i>
       Adicionar
@@ -11,44 +11,53 @@
   <div class="col-md-12">
     <table class="table table-bordered table-responsive-md table-striped">
       <thead>
-      <tr>
-        <th *ngIf="hasIndex" width="50px">#</th>
-        <th *ngFor="let column of columns" [width]="column.width">
-          {{ column.label }}
-        </th>
-        <th width="130px"></th>
-      </tr>
+        <tr>
+          <th *ngIf="hasIndex" width="50px">#</th>
+          <th *ngFor="let column of columns" [width]="column.width">
+            {{ column.label }}
+          </th>
+          <th width="130px"></th>
+        </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let item of model[variable]; let i = index" #items>
-        <td *ngIf="hasIndex" class="align-middle" width="40px">{{ i + 1 }}</td>
-        <td class="align-middle" *ngFor="let column of columns">
-          <input
-            *ngIf="column.editable; else text"
-            placeholder="Digite algo..."
-            class="form-control table-edit"
-            [(ngModel)]="item[column.model]"
-            name="item-{{ column.model }}-{{ i }}"
-          />
-          <ng-template #text>{{ item[column.model] }}</ng-template>
-        </td>
-        <td>
-          <span class="table-remove"
-          ><button
-            type="button"
-            class="btn btn-danger btn-rounded btn-sm my-0"
-            (click)="model[variable].splice(i, 1)"
-          >
-              Excluir
-            </button></span
-          >
-        </td>
-      </tr>
-      <tr *ngIf="!model[variable]?.length">
-        <td colspan="3" class="text-center">
-          Ainda não há {{ name.toLowerCase() }} por aqui.
-        </td>
-      </tr>
+        <tr *ngFor="let item of model[variable]; let i = index" #items>
+          <td *ngIf="hasIndex" class="align-middle" width="40px">
+            {{ i + 1 }}
+          </td>
+          <td class="align-middle" *ngFor="let column of columns">
+            <ng-container *ngIf="column.editable; else text">
+              <app-input-file
+                (onChange)="column.onChange && column.onChange($event, i)"
+                *ngIf="column.file"
+                [(model)]="item[column.model]"
+              ></app-input-file>
+              <input
+                *ngIf="!column.file"
+                placeholder="Digite algo..."
+                class="form-control table-edit"
+                [(ngModel)]="item[column.model]"
+                name="item-{{ column.model }}-{{ i }}"
+              />
+            </ng-container>
+            <ng-template #text>{{ item[column.model] }}</ng-template>
+          </td>
+          <td>
+            <span class="table-remove"
+              ><button
+                type="button"
+                class="btn btn-danger btn-rounded btn-sm my-0"
+                (click)="model[variable].splice(i, 1)"
+              >
+                Excluir
+              </button></span
+            >
+          </td>
+        </tr>
+        <tr [hidden]="model[variable]?.length">
+          <td [colSpan]="columns.length + 2" class="text-center">
+            Ainda não há {{ name.toLowerCase() }} por aqui.
+          </td>
+        </tr>
       </tbody>
     </table>
   </div>
