@@ -1,32 +1,31 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { apiUrl } from 'src/constants/constants';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
+import { Observable, tap } from "rxjs";
+import { apiUrl } from "src/constants/constants";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService {
-  private path = apiUrl + '/auth';
+  private path = apiUrl + "/auth";
   private _token?: string | null;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(user: User): Observable<TokenResponse> {
-    return this.http.post<TokenResponse>(this.path, user).pipe((response) => {
-      response.subscribe((response) => this.saveToken(response.token));
-      return response;
-    });
+    return this.http
+      .post<TokenResponse>(this.path, user)
+      .pipe(tap(this.saveToken));
   }
 
-  private saveToken(token: string) {
-    this._token = token;
-    localStorage.setItem('token', token);
+  private saveToken(response: TokenResponse) {
+    this._token = response.token;
+    localStorage.setItem("token", this._token);
   }
 
   private loadToken() {
-    this._token = localStorage.getItem('token');
+    this._token = localStorage.getItem("token");
     return this._token;
   }
 
@@ -41,6 +40,6 @@ export class AuthService {
   logout(): void {
     this._token = null;
     localStorage.clear();
-    this.router.navigate(['']);
+    this.router.navigate([""]);
   }
 }

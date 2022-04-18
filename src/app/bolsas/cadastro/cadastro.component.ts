@@ -1,15 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, QueryList, ViewChildren, } from '@angular/core';
 import { TiposBolsa } from '../../../model/constants';
 import { TableEditColumn } from '../../components/table-edit/table-edit.component';
 import { BolsasService } from '../bolsas.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Bolsa, Requisito} from "../../../model/bolsa";
+import { Bolsa, Requisito } from "../../../model/bolsa";
 
 @Component({
   selector: 'app-cadastro',

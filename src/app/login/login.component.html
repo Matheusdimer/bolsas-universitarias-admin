@@ -11,6 +11,10 @@
             style="width: 200px;"
           />
         </div>
+
+        <div *ngIf="error" class="alert alert-danger" role="alert">
+          {{ error }}
+        </div>
   
         <div class="md-outline mb-4">
           <mdb-form-control>
