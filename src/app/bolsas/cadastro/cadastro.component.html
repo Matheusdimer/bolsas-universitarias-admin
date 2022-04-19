@@ -77,6 +77,20 @@
         variable="documentos"
         [hasIndex]="true"
       ></app-table-edit>
+
+      <hr />
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Imagem</h5>
+          <p>Escolha uma imagem de capa para o cadastro da bolsa.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <app-input-file [(model)]="bolsa.fotoId"></app-input-file>
+        </div>
+      </div>
     </div>
     <div class="card-footer">
       <div class="row">

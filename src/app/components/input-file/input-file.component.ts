@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { UploadService } from '../../services/upload.service';
 import {apiUrl} from "../../../constants/constants";
 
@@ -7,7 +7,7 @@ import {apiUrl} from "../../../constants/constants";
   templateUrl: './input-file.component.html',
   styleUrls: ['./input-file.component.scss'],
 })
-export class InputFileComponent implements OnInit {
+export class InputFileComponent implements OnInit, OnChanges {
   @Input() model?: number;
 
   @Output() modelChange: EventEmitter<number> = new EventEmitter<number>();
@@ -19,8 +19,16 @@ export class InputFileComponent implements OnInit {
   url = `${apiUrl}/arquivos/`
 
   constructor(private service: UploadService) {}
+  
+  ngOnChanges(changes: SimpleChanges): void {
+    this.loadFile();
+  }
 
   ngOnInit(): void {
+    this.loadFile();
+  }
+
+  loadFile() {
     if (this.model) {
       this.service
         .getInfo(this.model)

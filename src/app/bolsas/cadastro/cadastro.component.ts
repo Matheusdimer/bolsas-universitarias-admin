@@ -1,6 +1,7 @@
 import {
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   QueryList,
   ViewChildren,
@@ -11,6 +12,7 @@ import { BolsasService } from "../bolsas.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Bolsa, Requisito } from "../../../model/bolsa";
 import { ToastrService } from "ngx-toastr";
+import { apiUrl } from "src/constants/constants";
 
 @Component({
   selector: "app-cadastro",
@@ -18,8 +20,6 @@ import { ToastrService } from "ngx-toastr";
   styleUrls: ["./cadastro.component.scss"],
 })
 export class CadastroComponent implements OnInit {
-  @ViewChildren("requisitos") private requisitosElem!: QueryList<ElementRef>;
-
   readonly requisitosCols: TableEditColumn[] = [
     {
       model: "descricao",
@@ -98,5 +98,9 @@ export class CadastroComponent implements OnInit {
       this.turnSaving();
       this.notification.success('Bolsa salva com sucesso.');
     });
+  }
+
+  getThumbImage() {
+    return `${apiUrl}/arquivos/${this.bolsa.fotoId}`
   }
 }
