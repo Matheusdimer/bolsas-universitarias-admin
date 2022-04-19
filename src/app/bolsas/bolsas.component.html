@@ -56,9 +56,9 @@
           <td>
             <span
               class="badge rounded-pill d-inline"
-              [ngClass]="i % 2 === 0 ? 'badge-danger' : 'badge-success'"
+              [ngClass]="bolsa.editalAtivo ? 'badge-success' : 'badge-danger'"
             >
-              {{ i % 2 === 0 ? "Inativo" : "Ativo" }}
+              {{ bolsa.editalAtivo ? "Ativo" : "Inativo" }}
             </span>
           </td>
           <td>{{ getTipoBolsa(bolsa.tipoBolsa) }}</td>
