@@ -16,6 +16,8 @@ export class InputFileComponent implements OnInit, OnChanges {
 
   arquivo?: Arquivo;
 
+  uploadingName: string | null = null; 
+
   url = `${apiUrl}/arquivos/`
 
   constructor(private service: UploadService) {}
@@ -43,9 +45,12 @@ export class InputFileComponent implements OnInit, OnChanges {
 
     if (!file) return;
 
+    this.uploadingName = file.name;
+
     this.service.upload(file).subscribe((arquivo) => {
       this.model = arquivo.id;
       this.arquivo = arquivo;
+      this.uploadingName = null;
 
       if (this.model) {
         this.modelChange.emit(this.model);
