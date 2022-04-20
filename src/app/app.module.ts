@@ -31,6 +31,7 @@ import { FuncionariosComponent } from "./funcionarios/funcionarios.component";
 import { InputFileComponent } from "./components/input-file/input-file.component";
 import { ToastrModule } from "ngx-toastr";
 import { AuthInterceptor } from "./interceptors/auth-interceptor";
+import { SkeletonComponent } from './components/skeleton/skeleton.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { AuthInterceptor } from "./interceptors/auth-interceptor";
     InscricoesComponent,
     FuncionariosComponent,
     InputFileComponent,
+    SkeletonComponent,
   ],
   imports: [
     BrowserModule,

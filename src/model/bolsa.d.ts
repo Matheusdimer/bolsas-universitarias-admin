@@ -9,7 +9,7 @@ interface Bolsa {
     editais: Array<Edital>,
     editalAtivo: boolean,
     tipoBolsa?: TipoBolsa,
-
+    fotoId?: number;
 }
 
 interface Requisito {

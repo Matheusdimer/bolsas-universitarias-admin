@@ -1,13 +1,19 @@
 <div class="card mb-5">
   <div class="card-header mt-2">
     <div class="d-flex align-items-center">
-      <a class="btn btn-link btn-rounded btn-icon text-black" [routerLink]="['/bolsas']">
+      <a
+        class="btn btn-link btn-rounded btn-icon text-black"
+        [routerLink]="['/bolsas']"
+      >
         <i style="font-size: 20px" class="fa fa-arrow-left"></i>
       </a>
-      <h4 style="margin: 0">{{ isEdit ? 'Editando' : 'Nova' }} bolsa</h4>
+      <h4 style="margin: 0">{{ isEdit ? "Editando" : "Nova" }} bolsa</h4>
     </div>
   </div>
-  <form #formBolsa="ngForm" (ngSubmit)="save()">
+
+  <app-skeleton *ngIf="isLoading"></app-skeleton>
+
+  <form [hidden]="isLoading" #formBolsa="ngForm" (ngSubmit)="save()">
     <div class="card-body">
       <div class="row">
         <div class="col-md-12 mb-4">
@@ -63,7 +69,7 @@
         variable="requisitos"
         [hasIndex]="true"
       ></app-table-edit>
-      <hr>
+      <hr />
       <app-table-edit
         name="Documentos"
         [columns]="documentosCols"
@@ -71,12 +77,35 @@
         variable="documentos"
         [hasIndex]="true"
       ></app-table-edit>
+
+      <hr />
+      <div class="row">
+        <div class="col-md-12">
+          <h5>Imagem</h5>
+          <p>Escolha uma imagem de capa para o cadastro da bolsa.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8">
+          <app-input-file [(model)]="bolsa.fotoId"></app-input-file>
+        </div>
+      </div>
     </div>
     <div class="card-footer">
       <div class="row">
         <div class="col-md-12 d-flex flex-row-reverse align-items-center">
-          <button class="btn btn-primary d-flex" type="submit" [disabled]="isLoading">
-            <span *ngIf="isLoading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          <button
+            class="btn btn-primary d-flex"
+            type="submit"
+            [disabled]="isSaving"
+          >
+            <span
+              *ngIf="isSaving"
+              class="spinner-border spinner-border-sm me-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
             <span>Salvar</span>
           </button>
         </div>
