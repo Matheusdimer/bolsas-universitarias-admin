@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import {CadastroComponent} from "./bolsas/cadastro/cadastro.component";
 import {InscricoesComponent} from "./candidaturas/inscricoes.component";
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
+import { AlunosComponent } from './alunos/alunos.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'funcionarios',
     component: FuncionariosComponent
+  },
+  {
+    path: 'alunos',
+    component: AlunosComponent
   }
 ];
 

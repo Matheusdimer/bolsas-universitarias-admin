@@ -1,0 +1,78 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Cadastro de alunos</a>
+      <div class="d-flex w-auto">
+        <button class="btn btn-success ms-2" [routerLink]="['cadastro']">
+          <i class="fa fa-plus"></i>
+          Adicionar
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <table class="table align-middle mt-3 bg-white">
+    <thead class="bg-light">
+      <tr>
+        <th width="100px">Identificador</th>
+        <th width="20%">Nome</th>
+        <th>CPF</th>
+        <th>Data nacimento</th>
+        <th>E-mail</th>
+        <th>Sexo</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngIf="alunos$ | async as alunos; else loading">
+        <tr *ngIf="!alunos.length">
+          <td colspan="6" class="text-center">
+            Ainda não há alunos por aqui.
+          </td>
+        </tr>
+        <tr *ngFor="let aluno of alunos; let i = index">
+          <td>
+            <p class="fw-normal mb-1">{{ aluno.id }}</p>
+          </td>
+          <td>
+            <div class="d-flex align-items-center">
+              <p class="fw-bold mb-1">{{ aluno.nome }}</p>
+            </div>
+          </td>
+          <td>
+            <p class="fw-normal mb-1">{{ aluno.cpf }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1"> {{ aluno.dataNascimento | date: "dd/MM/yyyy" }}</p>
+          </td>
+          <td>
+            <p class="fw-normal mb-1"> {{ aluno.email }}</p>
+          </td>
+          <td>
+            <span class="badge rounded-pill d-inline badge-info">
+              {{ aluno.sexo }}
+            </span>
+          </td>
+          <td>
+            <div class="d-flex">
+              <button type="button" class="btn btn-outline btn-sm btn-rounded" [routerLink]="['cadastro', aluno.id]">
+                <i class="fa fa-edit"></i>
+                Editar
+              </button>
+            </div>
+          </td>
+        </tr>
+      </ng-container>
+      <ng-template #loading>
+        <tr>
+          <td colspan="6">
+            <div class="d-flex align-items-center justify-content-center gap-2">
+              <div class="spinner-border" role="status" aria-hidden="true"></div>
+              <strong>Carregando...</strong>
+            </div>
+          </td>
+        </tr>
+      </ng-template>
+    </tbody>
+  </table>
+</div>
