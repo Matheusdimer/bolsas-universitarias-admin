@@ -32,6 +32,8 @@ import { InputFileComponent } from "./components/input-file/input-file.component
 import { ToastrModule } from "ngx-toastr";
 import { AuthInterceptor } from "./interceptors/auth-interceptor";
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
+import { AlunosComponent } from './alunos/alunos.component';
+import { CpfMaskPipe } from './components/cpf/cpf-mask.pipe';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
     InscricoesComponent,
     FuncionariosComponent,
     InputFileComponent,
-    SkeletonComponent,
+    SkeletonComponent,   
+    AlunosComponent,
+    CpfMaskPipe,
   ],
   imports: [
     BrowserModule,
