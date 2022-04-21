@@ -40,7 +40,7 @@
             </div>
           </td>
           <td>
-            <p class="fw-normal mb-1">{{ aluno.cpf }}</p>
+            <p class="fw-normal mb-1">{{ aluno.cpf | cpfMask }}</p>
           </td>
           <td>
             <p class="fw-normal mb-1">{{ aluno.dataNascimento | date: "dd/MM/yyyy" }}</p>
