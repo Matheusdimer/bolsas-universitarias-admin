@@ -12,3 +12,9 @@ export const TiposBolsa = [
   { id: 'INSTITUCIONAL', description: 'Institucional'},
   { id: 'CONVENIO', description: 'Convênio'},
 ];
+export const Sexos = [
+  { id: 'MASCULINO', description: 'Masculino'},
+  { id: 'FEMININO', description: 'Feminino'},
+  { id: 'OUTRO', description: 'Outro'},
+];
+
