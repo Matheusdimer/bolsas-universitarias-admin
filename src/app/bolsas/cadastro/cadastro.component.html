@@ -37,10 +37,10 @@
           </div>
         </div>
         <div class="col-md-4">
-          <select [(ngModel)]="bolsa.tipoBolsa" class="form-select" name="tipo">
+          <select [(ngModel)]="bolsa.tipoBolsa" class="form-select" name="tipoBolsa">
             <option [value]="undefined">Selecione o tipo da bolsa</option>
-            <option *ngFor="let tipo of tipos" [value]="tipo.id">
-              {{ tipo.description }}
+            <option *ngFor="let tipoBolsa of tiposBolsa" [value]="tipoBolsa.id">
+              {{ tipoBolsa.description }}
             </option>
           </select>
         </div>
@@ -61,6 +61,32 @@
           </div>
         </div>
       </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <select [(ngModel)]="bolsa.tipoInscricao" class="form-select" name="tipoInscricao" id="tipoInscricao">
+            <option [value]="undefined">Selecione o tipo de inscrição</option>
+            <option *ngFor="let tipoInscricao of tiposInscricao" [value]="tipoInscricao.id">
+              {{ tipoInscricao.description }}
+            </option>
+          </select>
+        </div>
+        <div class="col-md-8" *ngIf="bolsa.tipoInscricao === 'Externa'">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <input
+                mdbInput
+                class="form-control form-control-lg"
+                type="url"
+                id="url"
+                name="url"
+                [(ngModel)]="bolsa.url"
+              />
+              <label mdbLabel class="form-label" for="nome">URL de inscrição externa</label>
+            </mdb-form-control>
+          </div>
+        </div>
+      </div>
       <hr/>
       <app-table-edit
         name="Requisitos"
@@ -69,7 +95,7 @@
         variable="requisitos"
         [hasIndex]="true"
       ></app-table-edit>
-      <hr />
+      <hr/>
       <app-table-edit
         name="Documentos"
         [columns]="documentosCols"
@@ -78,7 +104,7 @@
         [hasIndex]="true"
       ></app-table-edit>
 
-      <hr />
+      <hr/>
       <div class="row">
         <div class="col-md-12">
           <h5>Imagem</h5>
