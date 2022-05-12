@@ -3,11 +3,11 @@
       <div class="d-flex align-items-center">
         <a
           class="btn btn-link btn-rounded btn-icon text-black"
-          [routerLink]="['/bolsas']"
+          [routerLink]="['/alunos']"
         >
           <i style="font-size: 20px" class="fa fa-arrow-left"></i>
         </a>
-        <h4 style="margin: 0">{{ isEdit ? "Editando" : "Novo" }} aluno</h4>
+        <h4 style="margin: 0">{{ isEdit ? "Editando" : "Novo" }} Aluno</h4>
       </div>
     </div>
   
@@ -17,7 +17,7 @@
       <div class="card-body">
         <div class="row">
           <div class="col-md-12 mb-4">
-            <h5>Dados Gerais</h5>
+            <h5>Dados Aluno</h5>
           </div>
         </div>
         <div class="row">
@@ -46,51 +46,47 @@
           </div>
         </div>
         <div class="row">
+          <div class="col-md-8">
+            <div class="md-outline mb-4">
+              <mdb-form-control>
+                <input
+                  mdbInput
+                  class="form-control form-control-lg"
+                  type="date"
+                  id="dataNascimento"
+                  name="dataNascimento"
+                  [(ngModel)]="dataNascimento.date"
+                />
+                <label mdbLabel class="form-label" for="nome">Nome</label>
+              </mdb-form-control>
+            </div>
+          </div>
+          </div>
+
+        <div class="row">
           <div class="col-md-12">
             <div class="md-outline mb-4">
               <mdb-form-control>
-                <textarea
-                  mdbInput
-                  class="form-control form-control-lg"
-                  type="text"
-                  name="descricao"
-                  [(ngModel)]="bolsa.descricao"
-                ></textarea>
-                <label mdbLabel class="form-label" for="nome">Descrição</label>
-              </mdb-form-control>
+                <label mdbLabel class="form-label" for="nome"></label>
+              </mdb-form-control> 
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-md-12">
-            <h5>Imagem</h5>
-            <p>Escolha uma imagem de capa para o cadastro da bolsa.</p>
-          </div>
-        </div>
-  
-        <div class="row">
-          <div class="col-md-8">
-            <app-input-file [(model)]="bolsa.fotoId"></app-input-file>
+      </div>  
+      <div class="row">
+        <div class="col-md-12">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <label mdbLabel class="form-label" for="nome">Descrição</label>
+            </mdb-form-control> 
           </div>
         </div>
       </div>
+      </div>
       <div class="card-footer">
         <div class="row">
-          <div class="col-md-12 d-flex flex-row-reverse align-items-center">
-            <button
-              class="btn btn-primary d-flex"
-              type="submit"
-              [disabled]="isSaving"
-            >
-              <span
-                *ngIf="isSaving"
-                class="spinner-border spinner-border-sm me-2"
-                role="status"
-                aria-hidden="true"
-              ></span>
-              <span>Salvar</span>
-            </button>
-          </div>
+       
         </div>
       </div>
     </form>
