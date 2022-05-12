@@ -34,6 +34,7 @@ import { AuthInterceptor } from "./interceptors/auth-interceptor";
 import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { CpfMaskPipe } from './components/cpf/cpf-mask.pipe';
+import { CadastroAlunosComponent } from './alunos/cadastro-alunos/cadastro-alunos.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CpfMaskPipe } from './components/cpf/cpf-mask.pipe';
     SkeletonComponent,   
     AlunosComponent,
     CpfMaskPipe,
+    CadastroAlunosComponent,
   ],
   imports: [
     BrowserModule,
