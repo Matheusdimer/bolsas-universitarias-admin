@@ -1,12 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  ViewChildren,
-} from "@angular/core";
-import { TiposBolsa } from "../../../model/constants";
+import { Component, OnInit, } from "@angular/core";
+import { TiposBolsa, TiposInscricao } from "../../../model/constants";
 import { TableEditColumn } from "../../components/table-edit/table-edit.component";
 import { BolsasService } from "../bolsas.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -48,7 +41,8 @@ export class CadastroComponent implements OnInit {
   isEdit = false;
   isSaving = false;
   isLoading = false;
-  tipos = TiposBolsa;
+  tiposBolsa = TiposBolsa;
+  tiposInscricao = TiposInscricao;
 
   bolsa: Bolsa = {
     tipoBolsa: undefined,

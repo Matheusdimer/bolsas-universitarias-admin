@@ -12,3 +12,8 @@ export const TiposBolsa = [
   { id: 'INSTITUCIONAL', description: 'Institucional'},
   { id: 'CONVENIO', description: 'Convênio'},
 ];
+
+export const TiposInscricao = [
+  { id: 'Interna', description: 'Interna'},
+  { id: 'Externa', description: 'Externa'}
+];

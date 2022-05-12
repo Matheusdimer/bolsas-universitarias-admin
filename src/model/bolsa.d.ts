@@ -9,6 +9,8 @@ interface Bolsa {
     editais: Array<Edital>,
     editalAtivo: boolean,
     tipoBolsa?: TipoBolsa,
+    tipoInscricao?: 'Interna' | 'Externa',
+    url?: string,
     fotoId?: number;
 }
 
