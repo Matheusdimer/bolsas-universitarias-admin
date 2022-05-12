@@ -6,6 +6,7 @@ import {CadastroComponent} from "./bolsas/cadastro/cadastro.component";
 import {InscricoesComponent} from "./candidaturas/inscricoes.component";
 import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { AlunosComponent } from './alunos/alunos.component';
+import { EditaisComponent } from "./bolsas/editais/editais.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'bolsas/cadastro',
     component: CadastroComponent
+  },
+  {
+    path: 'bolsas/editais/:bolsaId',
+    component: EditaisComponent
   },
   {
     path: 'bolsas/cadastro/:bolsaId',

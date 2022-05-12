@@ -37,12 +37,15 @@
           </div>
         </div>
         <div class="col-md-4">
-          <select [(ngModel)]="bolsa.tipoBolsa" class="form-select" name="tipoBolsa">
-            <option [value]="undefined">Selecione o tipo da bolsa</option>
-            <option *ngFor="let tipoBolsa of tiposBolsa" [value]="tipoBolsa.id">
-              {{ tipoBolsa.description }}
-            </option>
-          </select>
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de bolsa</mat-label>
+            <mat-select required [(ngModel)]="bolsa.tipoBolsa" name="tipoBolsa">
+              <mat-option [value]="undefined">--</mat-option>
+              <mat-option *ngFor="let tipoBolsa of tiposBolsa" [value]="tipoBolsa.id">
+                {{ tipoBolsa.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
       </div>
       <div class="row">
@@ -64,14 +67,17 @@
 
       <div class="row">
         <div class="col-md-4 mb-4">
-          <select [(ngModel)]="bolsa.tipoInscricao" class="form-select" name="tipoInscricao" id="tipoInscricao">
-            <option [value]="undefined">Selecione o tipo de inscrição</option>
-            <option *ngFor="let tipoInscricao of tiposInscricao" [value]="tipoInscricao.id">
-              {{ tipoInscricao.description }}
-            </option>
-          </select>
+          <mat-form-field appearance="outline">
+            <mat-label>Tipo de inscrição</mat-label>
+            <mat-select required [(ngModel)]="bolsa.tipoInscricao" name="tipoInscricao">
+              <mat-option [value]="undefined">--</mat-option>
+              <mat-option *ngFor="let tipoInscricao of tiposInscricao" [value]="tipoInscricao.id">
+                {{ tipoInscricao.description }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <div class="col-md-8" *ngIf="bolsa.tipoInscricao === 'Externa'">
+        <div class="col-md-8" *ngIf="bolsa.tipoInscricao === 'EXTERNA'">
           <div class="md-outline mb-4">
             <mdb-form-control>
               <input

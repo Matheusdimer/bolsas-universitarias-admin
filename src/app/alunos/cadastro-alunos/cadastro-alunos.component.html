@@ -1,3 +1,4 @@
+<!--
 <div class="card mb-5">
     <div class="card-header mt-2">
       <div class="d-flex align-items-center">
@@ -10,9 +11,9 @@
         <h4 style="margin: 0">{{ isEdit ? "Editando" : "Novo" }} aluno</h4>
       </div>
     </div>
-  
+
     <app-skeleton *ngIf="isLoading"></app-skeleton>
-  
+
     <form [hidden]="isLoading" #formAluno="ngForm" (ngSubmit)="save()">
       <div class="card-body">
         <div class="row">
@@ -67,7 +68,7 @@
             <p>Escolha uma imagem de capa para o cadastro da bolsa.</p>
           </div>
         </div>
-  
+
         <div class="row">
           <div class="col-md-8">
             <app-input-file [(model)]="bolsa.fotoId"></app-input-file>
@@ -95,4 +96,4 @@
       </div>
     </form>
   </div>
-  
+  -->

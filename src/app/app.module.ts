@@ -35,6 +35,8 @@ import { SkeletonComponent } from './components/skeleton/skeleton.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { CpfMaskPipe } from './components/cpf/cpf-mask.pipe';
 import { CadastroAlunosComponent } from './alunos/cadastro-alunos/cadastro-alunos.component';
+import { EditaisComponent } from './bolsas/editais/editais.component';
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -47,10 +49,11 @@ import { CadastroAlunosComponent } from './alunos/cadastro-alunos/cadastro-aluno
     InscricoesComponent,
     FuncionariosComponent,
     InputFileComponent,
-    SkeletonComponent,   
+    SkeletonComponent,
     AlunosComponent,
     CpfMaskPipe,
     CadastroAlunosComponent,
+    EditaisComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,11 +76,13 @@ import { CadastroAlunosComponent } from './alunos/cadastro-alunos/cadastro-aluno
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({ positionClass: "toast-bottom-right" }),
+    ToastrModule.forRoot({positionClass: "toast-bottom-right"}),
+    MatSelectModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

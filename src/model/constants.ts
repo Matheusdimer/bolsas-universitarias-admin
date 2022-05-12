@@ -20,6 +20,6 @@ export const Sexos = [
 ];
 
 export const TiposInscricao = [
-  { id: 'Interna', description: 'Interna'},
-  { id: 'Externa', description: 'Externa'}
+  { id: 'INTERNA', description: 'Interna'},
+  { id: 'EXTERNA', description: 'Externa'}
 ];

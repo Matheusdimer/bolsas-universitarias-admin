@@ -1,0 +1,72 @@
+<div class="card mb-5">
+  <div class="card-header mt-2">
+    <div class="d-flex align-items-center">
+      <a
+        class="btn btn-link btn-rounded btn-icon text-black"
+        [routerLink]="['/bolsas']"
+      >
+        <i style="font-size: 20px" class="fa fa-arrow-left"></i>
+      </a>
+      <h4 style="margin: 0">Editais</h4>
+    </div>
+  </div>
+
+  <app-skeleton *ngIf="isLoading"></app-skeleton>
+
+  <div class="card-body" *ngIf="bolsa">
+    <div class="row">
+      <div class="col-md-12">
+        <table class="table align-middle mt-3 bg-white">
+          <thead class="bg-light">
+            <tr>
+              <th width="100px">Identificador</th>
+              <th width="30%">Descrição</th>
+              <th>Data início</th>
+              <th>Data de término</th>
+              <th>Divulgação do resultado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let edital of bolsa.editais">
+              <td>{{ edital.id }}</td>
+              <td>{{ edital.descricao }}</td>
+              <td>{{ edital.dataInicio | date: "dd/MM/yyyy" }}</td>
+              <td>{{ edital.dataFim | date: "dd/MM/yyyy" }}</td>
+              <td>{{ edital.dataResultado | date: "dd/MM/yyyy" }}</td>
+            </tr>
+            <tr *ngIf="!bolsa.editais.length">
+              <td colspan="6" class="text-center">
+                Ainda não há editais por aqui.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <div class="row">
+      <div class="col-md-12 d-flex flex-row align-items-center justify-content-between">
+        <button [routerLink]="['/bolsas']" class="btn btn-light d-flex">
+            <span
+              *ngIf="isSaving"
+              class="spinner-border spinner-border-sm me-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          <span><i class="fa fa-arrow-left me-2"></i>Voltar</span>
+        </button>
+        <button class="btn btn-success d-flex">
+            <span
+              *ngIf="isSaving"
+              class="spinner-border spinner-border-sm me-2"
+              role="status"
+              aria-hidden="true"
+            ></span>
+          <span><i class="fa fa-plus me-2"></i>Edital</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
