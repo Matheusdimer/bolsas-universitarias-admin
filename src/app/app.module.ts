@@ -3,12 +3,10 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { LoginComponent } from "./login/login.component";
 import { BolsasComponent } from "./bolsas/bolsas.component";
-import { MdbAccordionModule } from "mdb-angular-ui-kit/accordion";
-import { MdbCarouselModule } from "mdb-angular-ui-kit/carousel";
 import { MdbCheckboxModule } from "mdb-angular-ui-kit/checkbox";
 import { MdbCollapseModule } from "mdb-angular-ui-kit/collapse";
 import { MdbDropdownModule } from "mdb-angular-ui-kit/dropdown";
@@ -60,8 +58,6 @@ import { MatSelectModule } from "@angular/material/select";
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MdbAccordionModule,
-    MdbCarouselModule,
     MdbCheckboxModule,
     MdbCollapseModule,
     MdbDropdownModule,
