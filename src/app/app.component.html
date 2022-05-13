@@ -1,45 +1,25 @@
 <div>
-  <header
-    *ngIf="!isLogin()"
-    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-white fixed-top"
-  >
-    <a
-      href="/"
-      class="d-flex align-items-center col-md-3 mb-2 mb-md-0 ms-5 text-dark text-decoration-none"
-    >
-      <img
-        src="http://www.unesc.net/portal/resources/assets/template/59//images/unesc-brand.svg"
-        alt="Unesc Logo"
-        style="width: 50px"
-      />
+  <header *ngIf="!isLogin()"
+    class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom bg-white fixed-top">
+    <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 ms-5 text-dark text-decoration-none">
+      <img src="http://www.unesc.net/portal/resources/assets/template/59//images/unesc-brand.svg" alt="Unesc Logo"
+        style="width: 50px" />
     </a>
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li>
-        <a [routerLink]="'/bolsas'"
-           [routerLinkActive]="'active-link'"
-           class="nav-link px-2 link-dark"
-          >Bolsas</a
-        >
+        <a [routerLink]="'/bolsas'" [routerLinkActive]="'active-link'" class="nav-link px-2 link-dark">Bolsas</a>
       </li>
       <li>
-        <a [routerLink]="'/inscricoes'"
-           [routerLinkActive]="'active-link'"
-           class="nav-link px-2 link-dark"
-          >Inscrições</a
-        >
+        <a [routerLink]="'/inscricoes'" [routerLinkActive]="'active-link'"
+          class="nav-link px-2 link-dark">Inscrições</a>
       </li>
       <li>
-        <a [routerLink]="'/alunos'"
-           [routerLinkActive]="'active-link'"
-           class="nav-link px-2 link-dark">Alunos</a>
+        <a [routerLink]="'/alunos'" [routerLinkActive]="'active-link'" class="nav-link px-2 link-dark">Alunos</a>
       </li>
       <li>
-        <a [routerLink]="'/funcionarios'"
-           [routerLinkActive]="'link-primary'"
-           class="nav-link px-2 link-dark"
-          >Funcionários</a
-        >
+        <a [routerLink]="'/funcionarios'" [routerLinkActive]="'active-link'"
+          class="nav-link px-2 link-dark">Funcionários</a>
       </li>
     </ul>
 

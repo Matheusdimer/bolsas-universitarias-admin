@@ -42,15 +42,16 @@
             <p class="fw-normal mb-1">{{ funcionario.cpf | cpfMask }}</p>
           </td>
           <td>
-            <p class="fw-normal mb-1">{{ funcionario.dataNascimento | date: 'dd/mm/yyyy'}}</p>
+            <p class="fw-normal mb-1">{{ funcionario.dataNascimento | date: 'dd/MM/yyyy'}}</p>
           </td>
           <td>
             <p class="fw-normal mb-1">{{ funcionario.email }}</p>
           </td>
           <td>
-            <button type="button" class="btn btn-outline btn-sm btn-rounded"[routerLink]="['cadastro', funcionario.id]">
-            <i class="fa fa-edit"></i>
-            Editar</button>
+            <button type="button" class="btn btn-outline btn-sm btn-rounded"
+              [routerLink]="['cadastro', funcionario.id]">
+              <i class="fa fa-edit"></i>
+              Editar</button>
           </td>
         </tr>
       </ng-container>
