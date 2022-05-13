@@ -7,7 +7,7 @@ import { apiUrl } from 'src/constants/constants';
   providedIn: 'root'
 })
 export class FuncionariosService {
-  path = apiUrl + '/funcionarios'
+  private path = apiUrl + '/funcionarios'
 
   constructor(
     private http: HttpClient

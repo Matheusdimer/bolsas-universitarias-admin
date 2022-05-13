@@ -6,13 +6,13 @@ import { apiUrl } from 'src/constants/constants';
   providedIn: 'root'
 })
 export class AlunosService {
-  private path = apiUrl + '/alunos' 
+  private path = apiUrl + '/alunos'
 
   constructor(
     private http: HttpClient
   ) { }
 
-  findAll(){
+  findAll() {
     return this.http.get<Aluno[]>(this.path);
   }
 }
