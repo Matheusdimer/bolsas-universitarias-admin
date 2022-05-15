@@ -1,0 +1,103 @@
+<form #formEdital="ngForm" (ngSubmit)="save()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro de edital</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+            <input
+              mdbInput
+              class="form-control form-control-lg"
+              type="text"
+              id="descricao"
+              name="descricao"
+              [(ngModel)]="edital.descricao"
+            />
+            <label mdbLabel class="form-label" for="descricao">Descrição *</label>
+          </mdb-form-control>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4">
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+            <input
+              mdbInput
+              class="form-control form-control-lg"
+              [ngClass]="edital.dataInicio && 'show'"
+              type="date"
+              id="dataInicio"
+              name="dataInicio"
+              [(ngModel)]="edital.dataInicio"
+            />
+            <label mdbLabel class="form-label" for="dataInicio">Data de início *</label>
+          </mdb-form-control>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+            <input
+              mdbInput
+              class="form-control form-control-lg"
+              [ngClass]="edital.dataFim && 'show'"
+              type="date"
+              id="dataFim"
+              name="dataFim"
+              [(ngModel)]="edital.dataFim"
+            />
+            <label mdbLabel class="form-label" for="dataFim">Data final *</label>
+          </mdb-form-control>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+            <input
+              mdbInput
+              class="form-control form-control-lg"
+              [ngClass]="edital.dataResultado && 'show'"
+              type="date"
+              id="dataResultado"
+              name="dataResultado"
+              [(ngModel)]="edital.dataResultado"
+            />
+            <label mdbLabel class="form-label" for="dataResultado">Divulgação do resultado</label>
+          </mdb-form-control>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label for="arquivo" class="form-label">Documento do edital</label>
+        <app-input-file
+          id="arquivo"
+          [(model)]="edital.arquivoId"
+        ></app-input-file>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
+      Fechar
+    </button>
+    <button type="submit" class="btn btn-primary">
+      <span
+        *ngIf="saving"
+        class="spinner-border spinner-border-sm me-2"
+        role="status"
+        aria-hidden="true"
+      ></span>
+      Salvar
+    </button>
+  </div>
+</form>

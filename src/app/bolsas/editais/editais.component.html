@@ -24,6 +24,7 @@
               <th>Data início</th>
               <th>Data de término</th>
               <th>Divulgação do resultado</th>
+              <th>Ações</th>
             </tr>
           </thead>
           <tbody>
@@ -32,7 +33,19 @@
               <td>{{ edital.descricao }}</td>
               <td>{{ edital.dataInicio | date: "dd/MM/yyyy" }}</td>
               <td>{{ edital.dataFim | date: "dd/MM/yyyy" }}</td>
-              <td>{{ edital.dataResultado | date: "dd/MM/yyyy" }}</td>
+              <td>{{ (edital.dataResultado | date: "dd/MM/yyyy") || '---' }}</td>
+              <td>
+                <div class="d-flex">
+                  <button
+                    type="button"
+                    class="btn btn-outline btn-sm btn-rounded"
+                    (click)="openModal(edital)"
+                  >
+                    <i class="fa fa-edit"></i>
+                    Editar
+                  </button>
+                </div>
+              </td>
             </tr>
             <tr *ngIf="!bolsa.editais.length">
               <td colspan="6" class="text-center">
@@ -48,22 +61,10 @@
   <div class="card-footer">
     <div class="row">
       <div class="col-md-12 d-flex flex-row align-items-center justify-content-between">
-        <button [routerLink]="['/bolsas']" class="btn btn-light d-flex">
-            <span
-              *ngIf="isSaving"
-              class="spinner-border spinner-border-sm me-2"
-              role="status"
-              aria-hidden="true"
-            ></span>
+        <button [routerLink]="['/bolsas']" class="btn btn-primary d-flex">
           <span><i class="fa fa-arrow-left me-2"></i>Voltar</span>
         </button>
-        <button class="btn btn-success d-flex">
-            <span
-              *ngIf="isSaving"
-              class="spinner-border spinner-border-sm me-2"
-              role="status"
-              aria-hidden="true"
-            ></span>
+        <button class="btn btn-success d-flex" (click)="openModal()">
           <span><i class="fa fa-plus me-2"></i>Edital</span>
         </button>
       </div>

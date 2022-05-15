@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Bolsa, Requisito } from "../../../model/bolsa";
+import { Bolsa, Edital, Requisito } from "../../../model/bolsa";
 import { BolsasService } from "../bolsas.service";
 import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
+import { MdbModalService } from "mdb-angular-ui-kit/modal";
+import { EditalModalComponent } from "./edital-modal/edital-modal.component";
 
 @Component({
   selector: 'app-editais',
@@ -20,8 +22,10 @@ export class EditaisComponent implements OnInit {
     private service: BolsasService,
     private router: Router,
     private route: ActivatedRoute,
-    private notification: ToastrService
-  ) {}
+    private notification: ToastrService,
+    private modalService: MdbModalService
+  ) {
+  }
 
   turnSaving() {
     this.isSaving = !this.isSaving;
@@ -60,6 +64,26 @@ export class EditaisComponent implements OnInit {
       this.turnSaving();
       this.notification.success('Editais salvos com sucesso.');
     });
+  }
+
+  openModal(edital?: Edital) {
+    const data: any = { bolsa: this.bolsa };
+
+    if (edital) {
+      data.edital = edital;
+    }
+
+    this.modalService
+      .open(EditalModalComponent, {
+        modalClass: 'modal-lg',
+        data
+      })
+      .onClose
+      .subscribe((bolsa: Bolsa) => {
+        if (bolsa) {
+          this.bolsa = bolsa;
+        }
+      });
   }
 
 }

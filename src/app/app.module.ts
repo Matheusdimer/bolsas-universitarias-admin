@@ -35,6 +35,7 @@ import { CpfMaskPipe } from './components/cpf/cpf-mask.pipe';
 import { CadastroAlunosComponent } from './alunos/cadastro-alunos/cadastro-alunos.component';
 import { EditaisComponent } from './bolsas/editais/editais.component';
 import { MatSelectModule } from "@angular/material/select";
+import { EditalModalComponent } from './bolsas/editais/edital-modal/edital-modal.component';
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
 
 @NgModule({
@@ -53,6 +54,7 @@ import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionar
     CpfMaskPipe,
     CadastroAlunosComponent,
     EditaisComponent,
+    EditalModalComponent,
     CadastroFuncionariosComponent,
   ],
   imports: [

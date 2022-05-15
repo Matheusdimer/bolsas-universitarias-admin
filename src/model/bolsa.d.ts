@@ -26,6 +26,7 @@ interface Edital {
     dataInicio: Date,
     dataFim: Date,
     dataResultado: Date,
+    bolsa?: Bolsa
 }
 
 interface Documento {
