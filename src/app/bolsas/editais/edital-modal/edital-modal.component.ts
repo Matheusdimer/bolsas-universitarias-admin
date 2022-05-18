@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MdbModalRef } from "mdb-angular-ui-kit/modal";
 import { Bolsa, Edital } from "../../../../model/bolsa";
 import { BolsasService } from "../../bolsas.service";
@@ -28,7 +28,10 @@ export class EditalModalComponent implements OnInit {
 
     this.saving = true;
 
-    this.bolsa.editais?.push(this.edital);
+    if (!this.edital.id) {
+      this.bolsa.editais?.push(this.edital);
+    }
+
     this.bolsasService.save(this.bolsa).subscribe((bolsa) => {
       this.saving = false;
       this.modalRef.close(bolsa);
