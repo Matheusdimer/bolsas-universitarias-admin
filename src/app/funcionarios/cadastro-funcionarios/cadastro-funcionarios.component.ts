@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { FuncionariosService } from '../funcionarios.service';
 
 @Component({
@@ -8,12 +9,13 @@ import { FuncionariosService } from '../funcionarios.service';
   templateUrl: './cadastro-funcionarios.component.html',
   styleUrls: ['./cadastro-funcionarios.component.scss']
 })
-export class CadastroFuncionariosComponent implements OnInit {
+export class CadastroFuncionariosComponent implements OnInit, OnDestroy {
 
   funcionario: Funcionario = { usuario: {} } as Funcionario
   isEdit = false
   isSaving = false
-  isLoading = false;
+  isLoading = false
+  $funcionarioSubscription?: Subscription
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +23,10 @@ export class CadastroFuncionariosComponent implements OnInit {
     private router: Router,
     private notification: ToastrService
   ) { }
+
+  ngOnDestroy(): void {
+    this.$funcionarioSubscription?.unsubscribe()
+  }
 
   ngOnInit(): void {
     const param = this.route.snapshot.paramMap.get("funcionarioId");
@@ -31,11 +37,11 @@ export class CadastroFuncionariosComponent implements OnInit {
 
     this.isEdit = true;
     this.turnLoading();
-
-    this.service
+    this.$funcionarioSubscription = this.service
       .find(parseInt(param))
       .subscribe(funcionario => {
         this.funcionario = funcionario
+        this.turnLoading()
       });
   }
   turnSaving() {

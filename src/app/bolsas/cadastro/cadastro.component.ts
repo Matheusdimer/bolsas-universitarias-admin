@@ -1,4 +1,4 @@
-import { Component, OnInit, } from "@angular/core";
+import { Component, OnDestroy, OnInit, } from "@angular/core";
 import { TiposBolsa, TiposInscricao } from "../../../model/constants";
 import { TableEditColumn } from "../../components/table-edit/table-edit.component";
 import { BolsasService } from "../bolsas.service";
@@ -6,13 +6,14 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Bolsa, Requisito } from "../../../model/bolsa";
 import { ToastrService } from "ngx-toastr";
 import { apiUrl } from "src/constants/constants";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-cadastro",
   templateUrl: "./cadastro.component.html",
   styleUrls: ["./cadastro.component.scss"],
 })
-export class CadastroComponent implements OnInit {
+export class CadastroComponent implements OnInit, OnDestroy {
   readonly requisitosCols: TableEditColumn[] = [
     {
       model: "descricao",
@@ -43,6 +44,7 @@ export class CadastroComponent implements OnInit {
   isLoading = false;
   tiposBolsa = TiposBolsa;
   tiposInscricao = TiposInscricao;
+  $bolsaSubscription?: Subscription
 
   bolsa: Bolsa = {
     tipoBolsa: undefined,
@@ -54,7 +56,11 @@ export class CadastroComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private notification: ToastrService
-  ) {}
+  ) { }
+
+  ngOnDestroy(): void {
+    this.$bolsaSubscription?.unsubscribe()
+  }
 
   turnSaving() {
     this.isSaving = !this.isSaving;
@@ -74,7 +80,7 @@ export class CadastroComponent implements OnInit {
     this.isEdit = true;
     this.turnLoading();
 
-    this.service
+    this.$bolsaSubscription = this.service
       .find(parseInt(param))
       .subscribe(this.setBolsa.bind(this));
   }
