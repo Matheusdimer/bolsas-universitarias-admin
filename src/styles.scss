@@ -125,3 +125,7 @@ body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
+
+input[type='date'].show {
+  color: #333 !important;
+}
