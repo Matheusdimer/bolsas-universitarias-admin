@@ -25,6 +25,7 @@
               id="user"
               name="email"
               [(ngModel)]="user.username"
+              required
             />
             <label mdbLabel class="form-label" for="user">Usuário</label>
           </mdb-form-control>
@@ -40,12 +41,13 @@
               class="form-control form-control-lg"
               name="password"
               [(ngModel)]="user.password"
+              required
             />
             <label mdbLabel class="form-label" for="user">Senha</label>
           </mdb-form-control>
         </div>
   
-        <button type="submit" class="btn btn-primary btn-block btn-lg mb-4">
+        <button type="submit" class="btn btn-primary btn-block btn-lg mb-4" [disabled]="loginForm.invalid">
           <div *ngIf="loading" class="spinner-border" role="status">
             <span class="visually-hidden">Carregando...</span>
           </div>
