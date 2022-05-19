@@ -129,3 +129,11 @@ body {
 input[type='date'].show {
   color: #333 !important;
 }
+
+input.form-control.ng-touched.ng-invalid ~ .form-label {
+  color: var(--mdb-red) !important;
+}
+
+.form-outline input.form-control.ng-touched.ng-invalid ~ .form-notch div {
+  border-color: var(--mdb-red) !important;
+}

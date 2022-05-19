@@ -20,6 +20,7 @@
               id="descricao"
               name="descricao"
               [(ngModel)]="edital.descricao"
+              required
             />
             <label mdbLabel class="form-label" for="descricao">Descrição *</label>
           </mdb-form-control>
@@ -38,6 +39,7 @@
               id="dataInicio"
               name="dataInicio"
               [(ngModel)]="edital.dataInicio"
+              required
             />
             <label mdbLabel class="form-label" for="dataInicio">Data de início *</label>
           </mdb-form-control>
@@ -54,6 +56,7 @@
               id="dataFim"
               name="dataFim"
               [(ngModel)]="edital.dataFim"
+              required
             />
             <label mdbLabel class="form-label" for="dataFim">Data final *</label>
           </mdb-form-control>
@@ -90,7 +93,7 @@
     <button type="button" class="btn btn-secondary" (click)="modalRef.close()">
       Fechar
     </button>
-    <button type="submit" class="btn btn-primary">
+    <button type="submit" class="btn btn-primary" [disabled]="saving || formEdital.invalid">
       <span
         *ngIf="saving"
         class="spinner-border spinner-border-sm me-2"

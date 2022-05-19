@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Bolsa, Edital, Requisito } from "../../../model/bolsa";
 import { BolsasService } from "../bolsas.service";
 import { ActivatedRoute, Router } from "@angular/router";
@@ -6,19 +6,21 @@ import { ToastrService } from "ngx-toastr";
 import { MdbModalService } from "mdb-angular-ui-kit/modal";
 import { EditalModalComponent } from "./edital-modal/edital-modal.component";
 import { ConfirmacaoModalComponent } from "../../components/confirmacao-modal/confirmacao-modal.component";
-import { finalize, map, Observable, switchMap } from "rxjs";
+import { finalize, map, Observable, Subscription, switchMap } from "rxjs";
 
 @Component({
   selector: 'app-editais',
   templateUrl: './editais.component.html',
   styleUrls: ['./editais.component.scss']
 })
-export class EditaisComponent implements OnInit {
+export class EditaisComponent implements OnInit, OnDestroy {
 
   isSaving = false;
   isLoading = false;
 
   bolsa?: Bolsa;
+
+  $subscriptions: Subscription[] = [];
 
   constructor(
     private service: BolsasService,
@@ -46,9 +48,17 @@ export class EditaisComponent implements OnInit {
 
     this.turnLoading();
 
-    this.service
+    this.subscription = this.service
       .find(parseInt(param))
-      .subscribe(this.setBolsa.bind(this));
+      .subscribe(this.setBolsa.bind(this))
+  }
+
+  ngOnDestroy(): void {
+    this.$subscriptions.forEach(sub => sub.unsubscribe());
+  }
+
+  set subscription(sub: Subscription) {
+    this.$subscriptions.push(sub);
   }
 
   setBolsa(bolsa: Bolsa) {
@@ -75,7 +85,7 @@ export class EditaisComponent implements OnInit {
       data.edital = edital;
     }
 
-    this.modalService
+    this.subscription = this.modalService
       .open(EditalModalComponent, {
         modalClass: 'modal-lg',
         data
@@ -89,16 +99,19 @@ export class EditaisComponent implements OnInit {
   }
 
   removeEdital(edital: Edital) {
-    this.modalService.open(ConfirmacaoModalComponent, {
+    this.subscription = this.modalService.open(ConfirmacaoModalComponent, {
       data: {
         message: 'Você tem certeza que deseja remover esse edital?'
       }
     })
       .onClose
       .pipe(
-        switchMap((confirm, index) => confirm
+        switchMap((confirm) => confirm
           ? this.service.removeEdital(this.bolsa!, edital)
-            .pipe(finalize(this.ngOnInit.bind(this)))
+            .pipe(finalize(() => {
+              this.ngOnInit();
+              this.notification.success("Edital removido com sucesso.");
+            }))
           : new Observable()))
       .subscribe();
   }
