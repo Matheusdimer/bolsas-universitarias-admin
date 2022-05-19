@@ -31,8 +31,9 @@
                 id="nome"
                 name="nome"
                 [(ngModel)]="bolsa.nome"
+                required
               />
-              <label mdbLabel class="form-label" for="nome">Nome</label>
+              <label mdbLabel class="form-label" for="nome">Nome *</label>
             </mdb-form-control>
           </div>
         </div>
@@ -58,8 +59,9 @@
                 type="text"
                 name="descricao"
                 [(ngModel)]="bolsa.descricao"
+                required
               ></textarea>
-              <label mdbLabel class="form-label" for="nome">Descrição</label>
+              <label mdbLabel class="form-label" for="nome">Descrição *</label>
             </mdb-form-control>
           </div>
         </div>
@@ -87,8 +89,9 @@
                 id="url"
                 name="url"
                 [(ngModel)]="bolsa.url"
+                required
               />
-              <label mdbLabel class="form-label" for="nome">URL de inscrição externa</label>
+              <label mdbLabel class="form-label" for="nome">URL de inscrição externa *</label>
             </mdb-form-control>
           </div>
         </div>
@@ -130,7 +133,7 @@
           <button
             class="btn btn-primary d-flex"
             type="submit"
-            [disabled]="isSaving"
+            [disabled]="isSaving || formBolsa.invalid"
           >
             <span
               *ngIf="isSaving"
