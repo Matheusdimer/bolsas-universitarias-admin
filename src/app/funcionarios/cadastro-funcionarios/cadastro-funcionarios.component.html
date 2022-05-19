@@ -51,6 +51,32 @@
           </div>
         </div>
       </div>
+      <hr>
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <h5>Usuário</h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <input mdbInput class="form-control form-control-lg" type="text" id="username" name="username"
+                [(ngModel)]="funcionario.usuario.username" />
+              <label mdbLabel class="form-label" for="username">Usuário</label>
+            </mdb-form-control>
+          </div>
+        </div>
+        <div class="col-md-6" *ngIf="!isEdit">
+          <div class="md-outline mb-4">
+            <mdb-form-control>
+              <input mdbInput class="form-control form-control-lg" type="password" id="senha" name="senha"
+                [(ngModel)]="funcionario.usuario.password" />
+              <label mdbLabel class="form-label" for="senha">Senha</label>
+            </mdb-form-control>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="card-footer">
       <div class="row">
