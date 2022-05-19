@@ -37,6 +37,7 @@ import { EditaisComponent } from './bolsas/editais/editais.component';
 import { MatSelectModule } from "@angular/material/select";
 import { EditalModalComponent } from './bolsas/editais/edital-modal/edital-modal.component';
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
+import { NgxMaskModule } from "ngx-mask";
 
 @NgModule({
   declarations: [
@@ -76,11 +77,12 @@ import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionar
     MdbTooltipModule,
     MdbValidationModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot({positionClass: "toast-bottom-right"}),
-    MatSelectModule
+    ToastrModule.forRoot({ positionClass: "toast-bottom-right" }),
+    MatSelectModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
