@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { apiUrl } from 'src/constants/constants';
-import {Bolsa} from "../../model/bolsa";
+import { Bolsa, Edital } from "../../model/bolsa";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +33,9 @@ export class BolsasService {
     }
 
     return this.http.post<Bolsa>(this.path, bolsa);
+  }
+
+  removeEdital(bolsa: Bolsa, edital: Edital) {
+    return this.http.delete<Edital>(`${this.path}/${bolsa.id}/editais/${edital.id}`);
   }
 }

@@ -38,6 +38,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { EditalModalComponent } from './bolsas/editais/edital-modal/edital-modal.component';
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
 import { NgxMaskModule } from "ngx-mask";
+import { ConfirmacaoModalComponent } from './components/confirmacao-modal/confirmacao-modal.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { NgxMaskModule } from "ngx-mask";
     EditaisComponent,
     EditalModalComponent,
     CadastroFuncionariosComponent,
+    ConfirmacaoModalComponent,
   ],
   imports: [
     BrowserModule,

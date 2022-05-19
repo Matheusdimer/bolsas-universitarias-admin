@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { ToastrService } from "ngx-toastr";
 import { MdbModalService } from "mdb-angular-ui-kit/modal";
 import { EditalModalComponent } from "./edital-modal/edital-modal.component";
+import { ConfirmacaoModalComponent } from "../../components/confirmacao-modal/confirmacao-modal.component";
+import { finalize, map, Observable, switchMap } from "rxjs";
 
 @Component({
   selector: 'app-editais',
@@ -86,4 +88,18 @@ export class EditaisComponent implements OnInit {
       });
   }
 
+  removeEdital(edital: Edital) {
+    this.modalService.open(ConfirmacaoModalComponent, {
+      data: {
+        message: 'Você tem certeza que deseja remover esse edital?'
+      }
+    })
+      .onClose
+      .pipe(
+        switchMap((confirm, index) => confirm
+          ? this.service.removeEdital(this.bolsa!, edital)
+            .pipe(finalize(this.ngOnInit.bind(this)))
+          : new Observable()))
+      .subscribe();
+  }
 }
