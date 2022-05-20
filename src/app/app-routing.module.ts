@@ -8,6 +8,7 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { EditaisComponent } from "./bolsas/editais/editais.component";
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
+import {CadastroAlunosComponent} from "./alunos/cadastro-alunos/cadastro-alunos.component";
 
 const routes: Routes = [
   {
@@ -49,6 +50,14 @@ const routes: Routes = [
   {
     path: 'alunos',
     component: AlunosComponent
+  },
+  {
+    path: 'alunos/cadastro',
+    component: CadastroAlunosComponent
+  },
+  {
+    path: 'alunos/cadastro/:alunoId',
+    component: CadastroAlunosComponent
   }
 
 ];
