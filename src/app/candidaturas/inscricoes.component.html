@@ -20,20 +20,60 @@
       </tr>
     </thead>
     <tbody>
-      <ng-template #loading>
-        <tr>
-          <td colspan="6">
-            <div class="d-flex align-items-center justify-content-center gap-2">
-              <div
-                class="spinner-border"
-                role="status"
-                aria-hidden="true"
-              ></div>
-              <strong>Carregando...</strong>
-            </div>
-          </td>
-        </tr>
-      </ng-template>
+    <ng-container *ngIf="iscricoes$ | async as inscricoes; else loading">
+      <tr *ngIf="!inscricoes.length">
+        <td colspan="6" class="text-center">
+          Ainda não há inscrições por aqui.
+        </td>
+      </tr>
+      <tr *ngFor="let inscricao of inscricoes; let i = index">
+        <td>
+          <p class="fw-normal mb-1">{{ inscricao.id }}</p>
+        </td>
+        <td>
+          <div class="d-flex align-items-center">
+            <p class="fw-bold mb-1">{{ inscricao.bolsa.nome }}</p>
+          </div>
+        </td>
+        <td style="max-width: 500px">
+          <p class="fw-normal mb-1 text-truncate">{{ inscricao.dataCriacao | date: "dd/MM/yyyy"  }}</p>
+        </td>
+        <td style="max-width: 500px">
+          <p class="fw-normal mb-1 text-truncate">{{ inscricao.aluno.nome}}</p>
+        </td>
+        <td>
+            <span class="badge rounded-pill d-inline"  [ngClass]="getMessage(inscricao.situacao)">
+              {{ formatarSituacao(inscricao.situacao) }}
+            </span>
+        </td>
+        <td>
+          <div class="d-flex">
+            <button
+                    type="button"
+                    class="btn btn-outline btn-sm btn-rounded ms-2"
+                    [routerLink]="['visualizar', inscricao.id]"
+            >
+              <i class="fa fa-eye"></i>
+              Visualizar
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-container>
+    <ng-template #loading>
+      <tr>
+        <td colspan="6">
+          <div class="d-flex align-items-center justify-content-center gap-2">
+            <div
+                    class="spinner-border"
+                    role="status"
+                    aria-hidden="true"
+            ></div>
+            <strong>Carregando...</strong>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
     </tbody>
   </table>
 </div>
