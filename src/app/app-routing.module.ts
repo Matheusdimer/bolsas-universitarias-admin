@@ -36,6 +36,10 @@ const routes: Routes = [
     component: InscricoesComponent
   },
   {
+    path: 'inscricoes/visualizar',
+    component: InscricoesComponent
+  },
+  {
     path: 'funcionarios',
     component: FuncionariosComponent
   },
