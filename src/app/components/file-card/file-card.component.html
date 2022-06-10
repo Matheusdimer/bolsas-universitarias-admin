@@ -1,0 +1,23 @@
+<div class="card">
+  <ng-container *ngIf="$arquivo | async as arquivo; else loading">
+    <a [href]="getUrl(arquivo.id!)" target="_blank">
+      <div class="file-thumb">
+        <i style="font-size: 30px" class="fa fa-file"></i>
+      </div>
+
+      <div class="info">
+        {{ arquivo.nome }}
+      </div>
+    </a>
+  </ng-container>
+
+  <ng-template #loading>
+    <div class="file-thumb">
+      <div class="spinner-border" role="status" aria-hidden="true"></div>
+    </div>
+
+    <div class="info loading-skeleton">
+      <div class="sk"></div>
+    </div>
+  </ng-template>
+</div>

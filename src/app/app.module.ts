@@ -39,6 +39,7 @@ import { EditalModalComponent } from './bolsas/editais/edital-modal/edital-modal
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
 import { NgxMaskModule } from "ngx-mask";
 import { ConfirmacaoModalComponent } from './components/confirmacao-modal/confirmacao-modal.component';
+import { FileCardComponent } from './components/file-card/file-card.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ConfirmacaoModalComponent } from './components/confirmacao-modal/confir
     EditalModalComponent,
     CadastroFuncionariosComponent,
     ConfirmacaoModalComponent,
+    FileCardComponent,
   ],
   imports: [
     BrowserModule,
