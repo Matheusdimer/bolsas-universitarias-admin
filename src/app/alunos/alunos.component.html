@@ -11,8 +11,9 @@
     </div>
   </nav>
 
-  <table class="table align-middle mt-3 bg-white">
-    <thead class="bg-light">
+  <div class="table-responsive mt-2">
+    <table class="table align-middle mt-3 bg-white">
+      <thead class="bg-light">
       <tr>
         <th width="100px">Identificador</th>
         <th width="20%">Nome</th>
@@ -22,8 +23,8 @@
         <th>Sexo</th>
         <th></th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <ng-container *ngIf="alunos$ | async as alunos; else loading">
         <tr *ngIf="!alunos.length">
           <td colspan="6" class="text-center">
@@ -73,6 +74,7 @@
           </td>
         </tr>
       </ng-template>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>

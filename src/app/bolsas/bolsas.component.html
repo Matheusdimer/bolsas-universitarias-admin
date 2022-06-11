@@ -11,8 +11,9 @@
     </div>
   </nav>
 
-  <table class="table align-middle mt-3 bg-white">
-    <thead class="bg-light">
+  <div class="table-responsive mt-2">
+    <table class="table align-middle mt-3 bg-white">
+      <thead class="bg-light">
       <tr>
         <th width="100px">Identificador</th>
         <th width="20%">Nome</th>
@@ -21,8 +22,8 @@
         <th>Tipo</th>
         <th>Ações</th>
       </tr>
-    </thead>
-    <tbody>
+      </thead>
+      <tbody>
       <ng-container *ngIf="bolsas$ | async as bolsas; else loading">
         <tr *ngIf="!bolsas.length">
           <td colspan="6" class="text-center">
@@ -84,6 +85,7 @@
           </td>
         </tr>
       </ng-template>
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>
