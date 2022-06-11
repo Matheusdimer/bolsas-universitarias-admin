@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {InscricaoBolsa} from "../../../model/inscricao";
-import {Subscription} from "rxjs";
-import {ActivatedRoute, Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
-import {InscricoesService} from "../inscricoes.service";
-import {Documento} from "../../../model/bolsa";
+import { InscricaoBolsa } from "../../../model/inscricao";
+import { Subscription } from "rxjs";
+import { ActivatedRoute, Router } from "@angular/router";
+import { ToastrService } from "ngx-toastr";
+import { InscricoesService } from "../inscricoes.service";
 
 @Component({
   selector: 'app-vizualizar',
@@ -43,25 +42,19 @@ export class VizualizarComponent implements OnInit {
           this.turnLoading()
         });
   }
+
   getEndereco = function (inscricaoBolsa: InscricaoBolsa){
     if(inscricaoBolsa.aluno.endereco){
       return inscricaoBolsa.aluno.endereco.logradouro + ", " +
-          inscricaoBolsa.aluno.endereco.numero + ", " +
+          inscricaoBolsa.aluno.endereco.numero + " - " +
           inscricaoBolsa.aluno.endereco.bairro + ", " +
-          inscricaoBolsa.aluno.endereco.municipio.nome + ", " +
-          inscricaoBolsa.aluno.endereco.municipio.estado.nome + ", " +
+          inscricaoBolsa.aluno.endereco.municipio.nome + " - " +
+          inscricaoBolsa.aluno.endereco.municipio.estado.sigla + " - " +
           inscricaoBolsa.aluno.endereco.cep
     }
-    return "";
+    return "---";
   }
-  //TODO esse arquivo id pode estar vindo do lugar errado
-  getArquivo = function (inscricaoBolsa: Documento){
-    console.log(inscricaoBolsa);
-    if(inscricaoBolsa.documento && inscricaoBolsa.documento.arquivoId){
-      return inscricaoBolsa.documento.arquivoId;
-    }
-    return 0;
-  }
+
   turnLoading() {
     this.isLoading = !this.isLoading;
   }

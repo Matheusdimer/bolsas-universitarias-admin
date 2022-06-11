@@ -12,14 +12,17 @@ export class FileCardComponent implements OnInit {
 
   url = `${apiUrl}/arquivos/`
 
-  @Input() arquivoId!: number;
+  @Input() arquivoId?: number;
+  @Input() descricao?: string;
 
   $arquivo!: Observable<Arquivo>;
 
   constructor(private service: UploadService) { }
 
   ngOnInit(): void {
-    this.$arquivo = this.service.getInfo(this.arquivoId);
+    if (this.arquivoId) {
+      this.$arquivo = this.service.getInfo(this.arquivoId);
+    }
   }
 
   getUrl(id: number) {

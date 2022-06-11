@@ -4,13 +4,14 @@
         <a class="btn btn-link btn-rounded btn-icon text-black" [routerLink]="['/inscricoes']">
           <i style="font-size: 20px" class="fa fa-arrow-left"></i>
         </a>
+        <h4 style="margin: 0">Visualizando inscrição</h4>
       </div>
     </div>
     <app-skeleton *ngIf="isLoading"></app-skeleton>
     <div class="card-body" *ngIf="!isLoading">
         <div class="row">
             <div class="col-md-12 mb-4">
-                <h5>Aluno</h5>
+                <h5>Dados do aluno</h5>
             </div>
         </div>
         <div class="row">
@@ -22,7 +23,7 @@
             </div>
             <div class="col-md-4">
                 <p><strong>CPF</strong></p>
-                <p>{{inscricaoBolsa.aluno.cpf}}</p>
+                <p>{{inscricaoBolsa.aluno.cpf | cpfMask}}</p>
             </div>
         </div>
         <div class="row">
@@ -33,8 +34,8 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <p><strong>Observação</strong></p>
-                <p>{{inscricaoBolsa.observacoes}}</p>
+                <p><strong>Observações do aluno</strong></p>
+                <p>{{inscricaoBolsa.observacoes || '---'}}</p>
             </div>
         </div>
         <div class="row">
@@ -43,11 +44,12 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3" *ngFor="let documento of inscricaoBolsa.documentos">
-                <app-file-card [arquivoId]="getArquivo(documento)"></app-file-card>
+            <div class="col-md-3" *ngFor="let inscricaoDocumento of inscricaoBolsa.documentos">
+                <app-file-card [arquivoId]="inscricaoDocumento.arquivoId"
+                               [descricao]="inscricaoDocumento.documento?.nome">
+
+                </app-file-card>
             </div>
         </div>
-
-        
     </div>
 </div>

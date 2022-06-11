@@ -1,15 +1,29 @@
 <div class="card">
-  <ng-container *ngIf="$arquivo | async as arquivo; else loading">
-    <a [href]="getUrl(arquivo.id!)" target="_blank">
-      <div class="file-thumb">
-        <i style="font-size: 30px" class="fa fa-file"></i>
-      </div>
+  <ng-container *ngIf="arquivoId; else semArquivo">
+    <ng-container *ngIf="$arquivo | async as arquivo; else loading">
+      <a [href]="getUrl(arquivo.id!)" target="_blank">
+        <div class="file-thumb">
+          <i style="font-size: 30px" class="fa fa-file"></i>
+        </div>
 
-      <div class="info">
-        {{ arquivo.nome }}
-      </div>
-    </a>
+        <div class="info">
+          <strong>{{ descricao }}</strong>
+          <span>{{ arquivo.nome }}</span>
+        </div>
+      </a>
+    </ng-container>
   </ng-container>
+
+  <ng-template #semArquivo>
+    <div class="file-thumb">
+      <i style="font-size: 30px" class="fa fa-file"></i>
+    </div>
+
+    <div class="info">
+      <strong>{{ descricao }}</strong>
+      <span>Não anexado</span>
+    </div>
+  </ng-template>
 
   <ng-template #loading>
     <div class="file-thumb">
