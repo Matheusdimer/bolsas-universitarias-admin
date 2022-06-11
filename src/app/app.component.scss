@@ -1,0 +1,9 @@
+.router-container {
+  margin-top: 6rem;
+}
+
+@media only screen and (max-width: 770px) {
+  .router-container {
+    margin-top: 12rem !important;
+  }
+}

@@ -64,8 +64,17 @@ body {
   background-color: #eee;
 }
 
+header {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
 main {
   max-width: 1500px;
+}
+
+div.table-responsive {
+  background-color: var(--mdb-light);
 }
 
 a.btn-icon {
