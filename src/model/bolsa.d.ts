@@ -33,6 +33,7 @@ interface Documento {
     id: number,
     nome: string,
     dataCriacao: Date,
-    arquivoId?: number
+    arquivoId?: number,
+    documento?: Documento
 
 }

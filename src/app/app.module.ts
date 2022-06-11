@@ -39,6 +39,7 @@ import { EditalModalComponent } from './bolsas/editais/edital-modal/edital-modal
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
 import { NgxMaskModule } from "ngx-mask";
 import { ConfirmacaoModalComponent } from './components/confirmacao-modal/confirmacao-modal.component';
+import {VizualizarComponent} from "./candidaturas/vizualizar/vizualizar.component";
 import { FileCardComponent } from './components/file-card/file-card.component';
 
 @NgModule({
@@ -61,6 +62,7 @@ import { FileCardComponent } from './components/file-card/file-card.component';
     CadastroFuncionariosComponent,
     ConfirmacaoModalComponent,
     FileCardComponent,
+    VizualizarComponent
   ],
   imports: [
     BrowserModule,

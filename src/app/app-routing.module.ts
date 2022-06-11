@@ -9,6 +9,7 @@ import { AlunosComponent } from './alunos/alunos.component';
 import { EditaisComponent } from "./bolsas/editais/editais.component";
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
 import {CadastroAlunosComponent} from "./alunos/cadastro-alunos/cadastro-alunos.component";
+import {VizualizarComponent} from "./candidaturas/vizualizar/vizualizar.component";
 
 const routes: Routes = [
   {
@@ -36,8 +37,8 @@ const routes: Routes = [
     component: InscricoesComponent
   },
   {
-    path: 'inscricoes/visualizar',
-    component: InscricoesComponent
+    path: 'inscricoes/visualizar/:id',
+    component: VizualizarComponent
   },
   {
     path: 'funcionarios',

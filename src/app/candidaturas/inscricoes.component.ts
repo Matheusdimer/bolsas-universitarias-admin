@@ -34,7 +34,7 @@ export class InscricoesComponent implements OnInit {
       case 'REJEITADO':
         return ['Rejeitado', 'badge-error'];
       case 'AGUARDANDO_CORRECAO':
-        return ['Aguardando Correção', 'badge-warn'];
+        return ['Aguardando Correção', 'badge-warning'];
     }
     return ['Erro', 'badge-error'];
   }

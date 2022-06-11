@@ -16,4 +16,5 @@ interface InscricaoBolsa {
     situacao: SituacaoBolsa,
     motivoRetorno?: string,
     aluno: Aluno,
+    observacoes?: string
 }

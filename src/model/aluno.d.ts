@@ -39,6 +39,7 @@ interface Endereco {
     id: number,
     logradouro: string,
     bairro: string,
+    numero: number,
     municipio: Municipio,
     estado: Estado,
     cep: number,
