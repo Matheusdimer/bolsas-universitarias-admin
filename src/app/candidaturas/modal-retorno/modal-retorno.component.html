@@ -1,0 +1,47 @@
+<form #formRetorno="ngForm" (ngSubmit)="confirm()">
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Confirmar ação</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-md-12">
+        <p>Para retornar essa inscrição ao aluno para correção informe o motivo.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="md-outline mb-4">
+          <mdb-form-control>
+              <textarea
+                id="motivoRetorno"
+                mdbInput
+                class="form-control form-control-lg"
+                type="text"
+                name="motivoRetorno"
+                rows="4"
+                [(ngModel)]="inscricao.motivoRetorno"
+                required
+              ></textarea>
+            <label mdbLabel class="form-label" for="motivoRetorno">Motivo do retorno *</label>
+          </mdb-form-control>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="cancel()">
+      Cancelar
+    </button>
+    <button [disabled]="formRetorno.invalid || loading" type="submit" class="btn btn-primary">
+      <span *ngIf="loading" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+      Retornar para o aluno
+    </button>
+  </div>
+</form>

@@ -1,0 +1,111 @@
+<div class="card">
+    <div class="card-header mt-2">
+      <div class="d-flex align-items-center">
+        <a class="btn btn-link btn-rounded btn-icon text-black" [routerLink]="['/inscricoes']">
+          <i style="font-size: 20px" class="fa fa-arrow-left"></i>
+        </a>
+        <h4 style="margin: 0">Visualizando inscrição</h4>
+        <span class="badge rounded-pill badge-info ms-2 mt-1">
+            {{ inscricaoBolsa.id }}
+        </span>
+      </div>
+    </div>
+    <app-skeleton *ngIf="isLoading"></app-skeleton>
+    <div class="card-body" *ngIf="!isLoading">
+        <div class="row">
+            <div class="col-md-9 mb-4">
+                <h5 [hidden]="!isAnalisar()">O que você deseja fazer?</h5>
+            </div>
+            <div class="col-md-3 d-flex justify-content-end align-items-start">
+                <span class="badge rounded-pill"
+                      [ngClass]="getClasseSituacao(inscricaoBolsa.situacao)">
+                  {{ formatarSituacao(inscricaoBolsa.situacao) }}
+                </span>
+            </div>
+        </div>
+
+        <div [hidden]="!isAnalisar()" class="row mb-5">
+            <div class="col-md-6">
+                <div class="btn-group shadow-0" role="group" aria-label="Basic example">
+                    <button *ngIf="isAguardandoAnalise()"
+                            type="button" class="btn btn-light text-primary"
+                            (click)="analisar()">
+                        <span *ngIf="loadingAnalise" class="spinner-border spinner-border-sm me-2"
+                              role="status" aria-hidden="true"></span>
+                        Iniciar análise
+                    </button>
+                    <button *ngIf="isAnalisar()" type="button"
+                            class="btn btn-light text-success" (click)="aprovar()">
+                        <i class="fa fa-thumbs-up me-2"></i>
+                        Aprovar
+                    </button>
+                    <button *ngIf="isAnalisar()" type="button"
+                            class="btn btn-light text-danger" (click)="reprovar()">
+                        <i class="fa fa-thumbs-down me-2"></i>
+                        Rejeitar
+                    </button>
+                    <button *ngIf="isAnalisar()" type="button"
+                            class="btn btn-light text-secondary" (click)="retornar()">
+                        <i class="fa fa-refresh me-2"></i>
+                        Retornar ao aluno
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h5>Observações do aluno</h5>
+            </div>
+        </div>
+
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <p>{{ inscricaoBolsa.observacoes || '---' }}</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 mb-2">
+                <h5>Dados do aluno</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="md-outline mb-4">
+                    <p><strong>Nome</strong></p>
+                    <p>{{inscricaoBolsa.aluno.nome}}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p><strong>CPF</strong></p>
+                <p>{{inscricaoBolsa.aluno.cpf | cpfMask}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="md-outline mb-4">
+                    <p><strong>Endereço</strong></p>
+                    <p>{{getEndereco(inscricaoBolsa)}}</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <p><strong>Observações do aluno</strong></p>
+                <p>{{inscricaoBolsa.observacoes || '---'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-2">
+                <h5>Documentos</h5>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-4" *ngFor="let inscricaoDocumento of inscricaoBolsa.documentos">
+                <app-file-card [arquivoId]="inscricaoDocumento.arquivoId"
+                               [descricao]="inscricaoDocumento.documento?.nome">
+
+                </app-file-card>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,19 +1,11 @@
-import {Bolsa, Documento} from "./bolsa";
+import { Bolsa, Documento } from "./bolsa";
 
-declare enum SituacaoBolsa {
-    AGUARDANDO_ANALISE,
-    EM_ANALISE,
-    APROVADO,
-    REJEITADO,
-    AGUARDANDO_CORRECAO
-}
-
-interface InscricaoBolsa {
+export interface InscricaoBolsa {
     id: number,
     bolsa: Bolsa,
     documentos: Array<Documento>,
     dataCriacao: Date,
-    situacao: SituacaoBolsa,
+    situacao: 'AGUARDANDO_ANALISE' | 'EM_ANALISE' | 'APROVADO' | 'REJEITADO' | 'AGUARDANDO_CORRECAO',
     motivoRetorno?: string,
     aluno: Aluno,
     observacoes?: string

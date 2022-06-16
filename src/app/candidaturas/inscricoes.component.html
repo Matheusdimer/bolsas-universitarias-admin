@@ -40,7 +40,7 @@
             <p class="fw-normal mb-1 text-truncate">{{ inscricao.aluno.nome}}</p>
           </td>
           <td>
-            <span class="badge rounded-pill d-inline"  [ngClass]="getMessage(inscricao.situacao)">
+            <span class="badge rounded-pill d-inline"  [ngClass]="getClasseSituacao(inscricao.situacao)">
               {{ formatarSituacao(inscricao.situacao) }}
             </span>
           </td>

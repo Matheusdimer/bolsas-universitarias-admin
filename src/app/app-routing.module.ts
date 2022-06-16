@@ -8,8 +8,8 @@ import { FuncionariosComponent } from './funcionarios/funcionarios.component';
 import { AlunosComponent } from './alunos/alunos.component';
 import { EditaisComponent } from "./bolsas/editais/editais.component";
 import { CadastroFuncionariosComponent } from './funcionarios/cadastro-funcionarios/cadastro-funcionarios.component';
-import {CadastroAlunosComponent} from "./alunos/cadastro-alunos/cadastro-alunos.component";
-import {VizualizarComponent} from "./candidaturas/vizualizar/vizualizar.component";
+import { CadastroAlunosComponent } from "./alunos/cadastro-alunos/cadastro-alunos.component";
+import { VisualizarComponent } from "./candidaturas/visualizar/visualizar.component";
 
 const routes: Routes = [
   {
@@ -38,7 +38,7 @@ const routes: Routes = [
   },
   {
     path: 'inscricoes/visualizar/:id',
-    component: VizualizarComponent
+    component: VisualizarComponent
   },
   {
     path: 'funcionarios',
