@@ -24,17 +24,8 @@ export class AuthService {
     localStorage.setItem("token", this._token);
   }
 
-  private loadToken() {
-    this._token = localStorage.getItem("token");
-    return this._token;
-  }
-
   get token() {
-    return this.hasToken() ? this._token : this.loadToken();
-  }
-
-  hasToken(): boolean {
-    return !!this._token;
+    return localStorage.getItem("token");
   }
 
   logout(): void {
