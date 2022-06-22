@@ -31,7 +31,7 @@ export class CadastroComponent implements OnInit, OnDestroy {
     {
       model: "arquivoId",
       editable: true,
-      label: "Arquivo",
+      label: "Arquivo de modelo",
       file: true,
       onChange: (arquivo: Arquivo, i) => {
         this.bolsa.documentos[i].dataCriacao = arquivo.criadoEm;
@@ -92,6 +92,9 @@ export class CadastroComponent implements OnInit, OnDestroy {
 
   save(): void {
     this.turnSaving();
+
+    this.bolsa.documentos.filter(documento => !documento.dataCriacao)
+      .forEach(documento => documento.dataCriacao = new Date())
 
     this.service.save(this.bolsa).subscribe(() => {
       this.router.navigate(["/bolsas"]);
